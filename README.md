@@ -13,4 +13,10 @@
 ### - Motivation - Displays random motivational quotes each time the page is loaded or refreshed.
 ### - Subjects - Contains summarized notes and key points for subjects and has mini quizzes
 ### - About - Introduces the creators of StudyMate and explains the project’s purpose.
-## 6. JavaScript Integration
+## 6. JavaScript Integration:
+### - Home - Digital Clock and Some Animations
+### - Study Planner - Users can input tasks they need to accomplish
+### - Motivation - Each page loaded randomly shows a motivational quote
+### - Subjects - Expandable Notes by the use of a button and Mini Quiz Questions
+### - About - Toggle button under names for other facts about us or StudyMate
+
