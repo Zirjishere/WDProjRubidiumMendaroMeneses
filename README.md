@@ -34,4 +34,6 @@
 ### - Copyright: © 2025 StudyMate | All Rights Reserved
 ### - Sources: Credits for all images, quotes, and references used throughout the website
 ### - Will have a design for the background
+## 9. Wireframe
+### https://www.canva.com/design/DAG3rU7xYkQ/16J2xB3DaShDjryoDM4VPw/edit
 
