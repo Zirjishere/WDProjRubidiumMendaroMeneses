@@ -18,5 +18,20 @@
 ### - Study Planner - Users can input tasks they need to accomplish
 ### - Motivation - Each page loaded randomly shows a motivational quote
 ### - Subjects - Expandable Notes by the use of a button and Mini Quiz Questions
-### - About - Toggle button under names for other facts about us or StudyMate
+### - About - Toggle button under names for other facts about us or StudyMate1  
+## 7. Navigation Design
+### All web pages will share a consistent top navigation bar with the links to:
+### - Home
+### - Study Planner
+### - Motivaation
+### - Subjects
+### - About
+## Navigation Features:
+### The navigation bar will be fixed at the top for easy access.
+### Users can switch between pages quickly without scrolling back up
+### Hover effects to highlight active links
+## 8. Footer Design
+### - Copyright: © 2025 StudyMate | All Rights Reserved
+### - Sources: Credits for all images, quotes, and references used throughout the website
+### - Will have a design for the background
 
