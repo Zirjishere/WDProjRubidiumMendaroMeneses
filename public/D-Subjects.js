@@ -1,4 +1,4 @@
-// ===== Dark Mode Toggle + Persistence (same as Home/Planner) =====
+// ===== Dark Mode Toggle =====
 const themeToggleBtn = document.getElementById("theme-toggle");
 
 function applySavedTheme() {
@@ -17,7 +17,7 @@ if (themeToggleBtn) {
   });
 }
 
-// ===== Subjects Data (FULL TEXT INCLUDED) =====
+// ===== Subjects Notes =====
 const subjects = {
   Math: {
     notes: "",
@@ -341,7 +341,7 @@ Object.keys(subjects).forEach((sub) => {
   if (saved) subjects[sub].notes = saved;
 });
 
-// ===== Functions used by your HTML onclick handlers (must be global) =====
+// ===== Functions used by your HTML onclick handlers =====
 function loadSubject(name, event) {
   currentSubject = name;
 
@@ -382,7 +382,6 @@ function refreshQuiz() {
     selected.map((q) => `<li>${q}</li>`).join("");
 }
 
-// ===== Init =====
 applySavedTheme();
 
 // Ensure the initial load highlights the already-active subject item in the sidebar
