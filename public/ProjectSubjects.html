@@ -244,18 +244,42 @@ quiz:[
 Physics:{
 notes:"",
 summary:`Components Method of Vectors:
-- Resolve vectors into perpendicular components for calculations.
+- Any vector can be broken into horizontal (x) and vertical (y) components.
+⟢ Vx = Vcosθ
+⟢ Vy = Vsinθ
+- To add vectors:
+1. Resolve each vector into components.
+2. Sum all x-components and y-components separately.
+⟢ Rx = ΣVx
+3. Find the resultant vector magnitude and direction:
+⟢ R = √(Rx^2 + Ry^2)
+4. Find angle
+⟢ θ = tan^(-1)(Ry/Rx)
 
 Projectile Motion:
-- Horizontal motion x=vt
-- Vertical motion y=v0y*t - 0.5*g*t^2
-- Max height, range calculations.
+- Motion of an object under gravity, moving in a parabolic path.
+- Horizontal motion: constant velocity.
+⟢ x = Vxt
+- Vertical motion: constant acceleration (gravity).
+⟢ y = Vyt - 0.gt^2
+⟢ vy = Vyi - gt
+- Key equations
+⟢ Range: R = (V^2sin2θ)/g
+⟢ Max Height: H = (V^2sin^2θ)/(2g)
 
 Normal Force:
-- Force perpendicular to surface. Fn = m*g*cosθ for incline.
+- Force perpendicular to surface.
+- On a flat surface:
+⟢ Fn = mg
+- On an incline:
+⟢ Fn = mgcosθ
+- Acts opposite to component of weight perpendicular to surface.
 
 Apparent Motion:
-- Observed motion relative to reference frame. Includes relative velocity equations.
+- Motion as observed from a moving frame of reference.
+- Apparent velocity:
+⟢ Vab = Vao - Vbo
+- Explains why objects appear to move differently from different frames.
 `,
 quiz:[
 "A projectile launched at 20 m/s at 30°. Find max height.",
@@ -267,15 +291,40 @@ quiz:[
 Statistics:{
 notes:"",
 summary:`Random Variables:
-- Discrete and continuous types. Represent possible outcomes.
+- A random variable (X) is a variable whose value is determined by a random experiment.
+- Types:
+⟢ Discrete: countable outcomes (e.g., number of heads in coin tosses).
+⟢ Continuous: infinite outcomes within a range (e.g., height, weight).
+- Expected Value (Mean):
+⟢ E(X) = Σ[x * P(x)] for discrete
+⟢ E(X) = ∫ x * f(x) dx for continuous
+- Variance & Standard Deviation:
+⟢ Var(X) = E[(X - μ)^2] = Σ[(x - μ)^2 * P(x)]
+⟢ SD(X) = √Var(X)
 
 Binomial Distribution:
-- P(x) = (nCx)(p^x)(1-p)^(n-x)
-- Example problems with trials and success probability.
+- Models number of successes in n independent Bernoulli trials.
+- Conditions:
+⟢ Fixed number of trials (n)
+⟢ Each trial is independent
+⟢ Two possible outcomes: success (p) and failure (q=1-p)
+⟢ Probability of success (p) is constant
+- Probability Formumla:
+⟢ P(X=k) = C(n,k) * p^k * q^(n-k)
+- Mean & Variance:
+⟢ Mean: μ = np
+⟢ Variance: σ^2 = npq
 
 Normal Distribution:
-- Bell curve, mean μ, standard deviation σ.
-- Z-score calculations for probabilities.
+- Continuous probability distribution, symmetric bell-shaped curve.
+- Standard Normal Distribution:
+⟢ Mean (μ) = 0
+⟢ Standard Deviation (σ) = 1
+- Probability Density Function:
+⟢ f(x) = (1/(σ√(2π))) * e^(-0.5((x-μ)/σ)^2)
+- Z-Score:
+⟢ Z = (X - μ) / σ
+- Use Z-tables to find probabilities.
 `,
 quiz:[
 "Coin flipped 5 times. Probability of exactly 3 heads?",
@@ -287,19 +336,52 @@ quiz:[
 Chemistry:{
 notes:"",
 summary:`Chemical Structures:
-- Lewis structures, bonding, VSEPR geometry.
+- Lewis Structures: Show valence electrons and bonding.
+⟢ Steps:
+1. Count total valence electrons.
+2. Arrange atoms (central atom = least electronegative).
+3. Connect atoms with single bonds, then place remaining electrons as lone pairs.
+4. Use double/triple bonds if needed to satisfy octet rule.
+- Octet Rule: Atoms tend to gain, lose, or share electrons to have 8 valence electrons.
 
 Molecular Geometry & VBT:
-- Predict shape using valence bond theory.
+- VSPER (Valence Shell Electron Pair Repulsion) Theory:
+⟢ Electron pairs around central atom repel each other, determining shape.
+⟢ Common Geometries:
+1. Linear (180°)
+2. Trigonal Planar (120°)
+3. Tetrahedral (109.5°)
+4. Trigonal Bipyramidal (90°, 120°)
+5. Octahedral (90°)
+- VBT (Valence Bond Theory):
+⟢ Bonds form when atomic orbitals overlap.
+⟢ Sigma (σ) bonds: head-on overlap.
+⟢ Pi (π) bonds: side-on overlap.
 
 Nomenclature:
-- Rules for naming inorganic compounds.
+- Ionic Compounds:
+⟢ Metal + Non-metal
+⟢ Use stock system if transition metals (e.g., FeCl3 = Iron(III) chloride).
+- Covalent Compounds:
+⟢ Non-metal + Non-metal
+⟢ Use prefixes to indicate number of atoms (e.g., CO2 = Carbon dioxide
+- Acids:
+⟢ HCl -> Hydrochloric acid (binary)
+⟢ H2SO4 -> Sulfuric acid (oxyanion acid)
 
 Writing & Balancing Equations:
-- Example reactions and balancing techniques.
+- Steps:
+1. Write unbalanced equation with correct formulas.
+2. Count atoms of each element on both sides.
+3. Adjust coefficients to balance atoms.
+4. Check final counts.
 
 Types of Reactions:
-- Synthesis, decomposition, single & double replacement, combustion.
+- Synthesis: A + B → AB
+- Decomposition: AB → A + B
+- Single Replacement: A + BC → AC + B
+- Double Replacement: AB + CD → AD + CB
+- Combustion: Hydrocarbon + O2 → CO2 + H2O
 `,
 quiz:[
 "Draw Lewis structure of H2O and NH3.",
@@ -310,14 +392,56 @@ quiz:[
 
 Biology:{
 notes:"",
-summary:`Microscopy & Tissues:
-- Identify animal and plant tissue types under microscope.
+summary:`Microscopy:
+- Microscope Parts & Functions:
+⟢ Eyepiece: Magnifies image.
+⟢ Objective Lenses: Different magnifications (4x, 10x, 40x).
+⟢ Stage: Holds slide.
+⟢ Diaphragm: Controls light.
+⟢ Coarse/Fine Focus: Adjusts clarity.
+- Magnification Formula:
+⟢ Total Magnification = Eyepiece Magnification × Objective Magnification
+- Resolving power: 
+⟢ Ability to distinguish two close objects as separate.
+- Types of Microscopes:
+⟢ Light Microscope: Uses light, max mag ~1000x.
+⟢ Electron Microscope: Uses electrons, max mag ~1,000,000x.
+
+Animal and Plant Tissues:
+- Animal Tissues:
+⟢ Epithelial: Covers body surfaces.
+⟢ Connective: Supports and binds (e.g., bone, blood).
+⟢ Muscle: Movement (skeletal, cardiac, smooth).
+⟢ Nervous: Transmits signals.
+- Plant Tissues:
+⟢ Meristematic: Growth regions.
+⟢ Permanent/Simple: Parenchyma, Collenchyma, Sclerenchyma.
+⟢ Permanent/Complex: Xylem (water transport), Phloem (food transport).
 
 Nutrition & Digestion:
-- Digestive organs, enzyme functions, nutrient absorption.
+- Nutrition Types:
+⟢ Autotrophic: Produce own food (photosynthesis).
+⟢ Heterotrophic: Consume other organisms.
+- Human Digestive System:
+⟢ Mouth: Mechanical & chemical digestion (saliva).
+⟢ Esophagus: Transports food to stomach.
+⟢ Stomach: Protein digestion (pepsin, HCl).
+⟢ Small Intestine: Nutrient absorption (enzymes from pancreas, bile from liver).
+⟢ Large Intestine: Water absorption, feces formation.
 
 Transport/Circulation:
-- Circulatory system, oxygen transport, blood flow.
+- In Animals:
+⟢ Circulatory System:
+1. Heart: Pumps blood.
+2. Blood Vessels: Arteries, veins, capillaries.
+3. Blood: RBCs, WBCs, platelets, plasma.
+⟢ Transpotation of Substances:
+1. Oxygen: Lungs → Body cells via hemoglobin.
+2. Nutrients: Digested food → Body cells via bloodstream.
+- In Plants:
+⟢ Xylem: Transports water & minerals from roots to leaves.
+⟢ Phloem: Transports food from leaves to other parts.
+⟢ Factors affecting transport: Concentration gradient, pressure, transpiration rate
 `,
 quiz:[
 "Identify tissue types in microscope slide.",
