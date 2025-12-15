@@ -1,0 +1,199 @@
+/* ===== Color Variables for Light and Dark Modes ===== */
+:root {
+    --bg-color: #9bb9c7;
+    --text-color: #357ab8;
+    --box-bg: #ffffff;
+    --box-shadow: rgba(53, 122, 184, 0.2);
+    --navbar-bg: #9bb9c7;
+    --link-color: #357ab8;
+}
+
+.dark-mode {
+    --bg-color: #1f2a44;
+    --text-color: #f0f4f8;
+    --box-bg: #2e3a5e;
+    --box-shadow: rgba(155, 185, 199, 0.35);
+    --navbar-bg: #284a7a;
+    --link-color: #9bb9c7;
+}
+
+/* ===== Make it Consistent with Sizes ===== */
+* {
+    box-sizing: border-box;
+}
+
+/* Make the sticky/flexible footer layout work */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== Body Layout ===== */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.2s, color 0.2s;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ===== Navbar (Fixed) ===== */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--navbar-bg);
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;          /* important */
+    right: 0;         /* important */
+    width: 100%;      /* full width */
+    z-index: 1000;
+    box-shadow: 0 2px 5px var(--box-shadow);
+    box-sizing: border-box; /* makes padding not cause overflow */
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-title {
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+#theme-toggle {
+    padding: 5px 10px;
+    background-color: var(--link-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.navbar a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: var(--link-color);
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: var(--text-color);
+}
+
+/* ===== Main Content Area ===== */
+.content {
+    margin-top: 80px; /* space for fixed navbar */
+    padding: 20px 40px;
+
+    margin-right: 300px; /* space for calendar on right (your future feature) */
+
+    flex: 1;              /* IMPORTANT: pushes footer down when content is short */
+    padding-bottom: 20px; /* small spacing only */
+}
+
+/* ===== Box/Card Styles ===== */
+.box {
+    background-color: var(--box-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--box-shadow);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: box-shadow 0.3s;
+}
+
+.small-box {
+    max-width: 50%;
+    padding: 15px;
+    text-align: center;
+}
+
+.box:hover {
+    box-shadow: 0 6px 12px var(--box-shadow);
+}
+
+/* ===== Button Styles ===== */
+.button {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: var(--link-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+}
+
+/* ===== Clock & Quote ===== */
+#clock {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0;
+}
+
+#motivational-quote {
+    font-style: italic;
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* ===== Footer (Flexible / Not Fixed) ===== */
+footer {
+    margin-top: auto; /* IMPORTANT: keeps footer at bottom if page is short */
+    width: 100%;
+    text-align: center;
+    padding: 0 20px 20px;
+}
+
+/* Make footer box look consistent */
+footer .box {
+    margin-bottom: 0;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+        width: 100%;
+    }
+
+    .navbar-left, .navbar-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .content {
+        padding: 20px 20px;
+        margin-right: 0;
+    }
+
+    .small-box {
+        max-width: 100%;
+    }
+
+    #clock {
+        font-size: 2em;
+    }
+}

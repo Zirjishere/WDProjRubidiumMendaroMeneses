@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ===== META TAGS ===== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="StudyMate: Your Personal Study Companion Tool for productivity, planning, and motivation.">
+    <meta name="author" content="Zirjan Hero F. Mendaro & Sasha Victoria Meneses">
+    <!-- ===== TITLE ===== -->
+    <title>StudyMate | Home</title>
+    <!-- ===== FAVICON ===== -->
+    <link rel="icon" type="image/png" href="Assets/StudyMate.png">
+    <!-- ===== HOME CSS ===== -->
+    <link rel="stylesheet" href="styleHome.css">
+</head>
+<body>
+    <!-- ===== HEADER / NAVBAR ===== -->
+    <header>
+        <div class="navbar">
+            <!-- Left side: logo, site title, dark mode -->
+            <div class="navbar-left">
+                <img src="Assets/StudyMate.png" alt="StudyMate Logo" width="40" height="40" style="margin-right:10px;">
+                <span class="navbar-title">StudyMate</span>
+                <button id="theme-toggle" type="button">Toggle Dark Mode</button>
+            </div>
+
+            <!-- Right side: navigation links -->
+            <nav class="navbar-right" aria-label="Main Navigation">
+                <a href="1-ProjectHome.html" aria-current="page">Home</a>
+                <a href="2-ProjectStudyPlanner.html">Study Planner</a>
+                <a href="3-ProjectMotivation.html">Motivation</a>
+                <a href="4-ProjectSubjects.html">Subjects</a>
+                <a href="5-ProjectAbout.html">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="content">
+        <!-- Welcome box -->
+        <section class="box small-box">
+            <h1>Welcome to StudyMate!</h1>
+            <p>
+                StudyMate is your personal study companion designed to help you organize your study sessions, track your progress,
+                and stay motivated. It combines planning tools, motivational support, and time tracking in one website.
+            </p>
+            <p>
+                Use the navigation bar to explore the Study Planner, read motivational quotes, and review subjects.
+                Build better habits by staying consistent and managing your time wisely.
+            </p>
+        </section>
+
+        <!-- Motivation box -->
+        <section class="box small-box">
+            <h2>Motivational Glimpse</h2>
+            <p>Here’s a quick motivational quote to start your day strong:</p>
+
+            <blockquote id="motivational-quote">Loading...</blockquote>
+
+            <a href="3-ProjectMotivation.html" class="button">Go to Motivation Page</a>
+        </section>
+
+        <!-- Clock box -->
+        <section class="box small-box">
+            <h2>Real-Time Clock</h2>
+            <p>Track the time during your study sessions using the live clock below:</p>
+
+            <div id="clock">Loading...</div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER (Flexible / Not fixed) ===== -->
+    <footer>
+        <div class="box">
+            <p>&copy; 2025 StudyMate | All Rights Reserved</p>
+            <p>Sources (APA): Update this footer with your image and quote sources.</p>
+        </div>
+    </footer>
+
+    <!-- ===== HOME JS ===== -->
+    <script src="Home.js"></script>
+</body>
+</html>
