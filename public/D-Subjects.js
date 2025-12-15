@@ -1,7 +1,27 @@
+// ===== Dark Mode Toggle + Persistence (same as Home/Planner) =====
+const themeToggleBtn = document.getElementById("theme-toggle");
+
+function applySavedTheme() {
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark") document.body.classList.add("dark-mode");
+  else document.body.classList.remove("dark-mode");
+}
+
+if (themeToggleBtn) {
+  themeToggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    localStorage.setItem(
+      "theme",
+      document.body.classList.contains("dark-mode") ? "dark" : "light"
+    );
+  });
+}
+
+// ===== Subjects Data (FULL TEXT INCLUDED) =====
 const subjects = {
-Math: {
-notes:"",
-summary:`Remainder Theorem, Factor Theorem, Descartes' Rule of Signs:
+  Math: {
+    notes: "",
+    summary: `Remainder Theorem, Factor Theorem, Descartes' Rule of Signs:
 - Remainder Theorem: The remainder of f(x) divided by (x-a) is f(a).
 - Factor Theorem: If f(a)=0, then (x-a) is a factor of f(x).
 - Descartes' Rule of Signs: Determines possible number of positive and negative real roots.
@@ -27,16 +47,16 @@ Transformation of Functions:
 Inverse Functions & Graphs:
 - Function must be one-to-one. Graph reflected over y=x.
 `,
-quiz:[
-"Find remainder when f(x)=x^3-2x^2+x-5 divided by x-1.",
-"Determine if x-2 is a factor of f(x)=x^3-4x^2+x+6.",
-"Use Rational Root Theorem to find possible rational roots of f(x)=2x^3-3x^2+x-1."
-]
-},
+    quiz: [
+      "Find remainder when f(x)=x^3-2x^2+x-5 divided by x-1.",
+      "Determine if x-2 is a factor of f(x)=x^3-4x^2+x+6.",
+      "Use Rational Root Theorem to find possible rational roots of f(x)=2x^3-3x^2+x-1."
+    ]
+  },
 
-Physics:{
-notes:"",
-summary:`Components Method of Vectors:
+  Physics: {
+    notes: "",
+    summary: `Components Method of Vectors:
 - Any vector can be broken into horizontal (x) and vertical (y) components.
 ⟢ Vx = Vcosθ
 ⟢ Vy = Vsinθ
@@ -74,16 +94,16 @@ Apparent Motion:
 ⟢ Vab = Vao - Vbo
 - Explains why objects appear to move differently from different frames.
 `,
-quiz:[
-"A projectile launched at 20 m/s at 30°. Find max height.",
-"Two vectors A=5i+3j and B=-2i+4j. Find resultant using components.",
-"A box rests on 30° incline. Calculate normal force."
-]
-},
+    quiz: [
+      "A projectile launched at 20 m/s at 30°. Find max height.",
+      "Two vectors A=5i+3j and B=-2i+4j. Find resultant using components.",
+      "A box rests on 30° incline. Calculate normal force."
+    ]
+  },
 
-Statistics:{
-notes:"",
-summary:`Random Variables:
+  Statistics: {
+    notes: "",
+    summary: `Random Variables:
 - A random variable (X) is a variable whose value is determined by a random experiment.
 - Types:
 ⟢ Discrete: countable outcomes (e.g., number of heads in coin tosses).
@@ -119,16 +139,16 @@ Normal Distribution:
 ⟢ Z = (X - μ) / σ
 - Use Z-tables to find probabilities.
 `,
-quiz:[
-"Coin flipped 5 times. Probability of exactly 3 heads?",
-"Heights normal distribution mean 160cm, SD 10cm. Probability taller than 170cm?",
-"Define a random variable for number of defective items in sample of 10."
-]
-},
+    quiz: [
+      "Coin flipped 5 times. Probability of exactly 3 heads?",
+      "Heights normal distribution mean 160cm, SD 10cm. Probability taller than 170cm?",
+      "Define a random variable for number of defective items in sample of 10."
+    ]
+  },
 
-Chemistry:{
-notes:"",
-summary:`Chemical Structures:
+  Chemistry: {
+    notes: "",
+    summary: `Chemical Structures:
 - Lewis Structures: Show valence electrons and bonding.
 ⟢ Steps:
 1. Count total valence electrons.
@@ -176,16 +196,16 @@ Types of Reactions:
 - Double Replacement: AB + CD → AD + CB
 - Combustion: Hydrocarbon + O2 → CO2 + H2O
 `,
-quiz:[
-"Draw Lewis structure of H2O and NH3.",
-"Balance: Fe + O2 → Fe2O3",
-"Name compound: K2SO4"
-]
-},
+    quiz: [
+      "Draw Lewis structure of H2O and NH3.",
+      "Balance: Fe + O2 → Fe2O3",
+      "Name compound: K2SO4"
+    ]
+  },
 
-Biology:{
-notes:"",
-summary:`Microscopy:
+  Biology: {
+    notes: "",
+    summary: `Microscopy:
 - Microscope Parts & Functions:
 ⟢ Eyepiece: Magnifies image.
 ⟢ Objective Lenses: Different magnifications (4x, 10x, 40x).
@@ -236,16 +256,16 @@ Transport/Circulation:
 ⟢ Phloem: Transports food from leaves to other parts.
 ⟢ Factors affecting transport: Concentration gradient, pressure, transpiration rate
 `,
-quiz:[
-"Identify tissue types in microscope slide.",
-"Describe path of food through digestive system.",
-"Explain oxygen transport in blood."
-]
-},
+    quiz: [
+      "Identify tissue types in microscope slide.",
+      "Describe path of food through digestive system.",
+      "Explain oxygen transport in blood."
+    ]
+  },
 
-"Social Science":{
-notes:"",
-summary:`American Revolution (1775-1783):
+  "Social Science": {
+    notes: "",
+    summary: `American Revolution (1775-1783):
 - Colonists in North America rebelled against British rule.
 - Key causes: taxation without representation, desire for self-governance.
 - Outcome: Independence of USA, establishment of democratic government.
@@ -260,103 +280,110 @@ Industrial Revolution (18th-19th centuries):
 - Key inventions: steam engine, spinning jenny, power loom.
 - Impact: Urbanization, economic growth, social changes.
 `,
-quiz:[
-"Explain causes of French Revolution.",
-"Compare outcomes of American and French Revolutions.",
-"Identify inventions of Industrial Revolution and impact."
-]
-},
+    quiz: [
+      "Explain causes of French Revolution.",
+      "Compare outcomes of American and French Revolutions.",
+      "Identify inventions of Industrial Revolution and impact."
+    ]
+  },
 
-"Computer Science":{
-notes:"",
-summary:`Arrays:
+  "Computer Science": {
+    notes: "",
+    summary: `Arrays:
 - Store multiple elements.
 - Access by index.
 - Looping and array operations (sum, max/min, sorting).
 - Example: declare, push, pop, traverse.
 `,
-quiz:[
-"Write program to sum elements in array.",
-"Sort array [3,1,4,1,5] ascending.",
-"Find max and min elements of array."
-]
-},
+    quiz: [
+      "Write program to sum elements in array.",
+      "Sort array [3,1,4,1,5] ascending.",
+      "Find max and min elements of array."
+    ]
+  },
 
-Filipino:{
-notes:"",
-summary:`Pangngalan, Pandiwa, Paksa, Tayutay, Sukat:
+  Filipino: {
+    notes: "",
+    summary: `Pangngalan, Pandiwa, Paksa, Tayutay, Sukat:
 - Pangngalan: noun
 - Pandiwa: verb
 - Paksa: subject/topic
 - Tayutay: figurative language
 - Sukat: meter in poetry
 `,
-quiz:[
-"Identify pangngalan in: 'Ang aso ay tumakbo sa parke.'",
-"Piliin ang pandiwa: 'Kumain si Ana ng mangga.'",
-"Ano ang paksa: 'Ang mga bata ay naglalaro sa likod-bahay.'"
-]
-},
+    quiz: [
+      "Identify pangngalan in: 'Ang aso ay tumakbo sa parke.'",
+      "Piliin ang pandiwa: 'Kumain si Ana ng mangga.'",
+      "Ano ang paksa: 'Ang mga bata ay naglalaro sa likod-bahay.'"
+    ]
+  },
 
-English:{
-notes:"",
-summary:`Grammar & Literary Concepts:
+  English: {
+    notes: "",
+    summary: `Grammar & Literary Concepts:
 - Nouns, verbs, adjectives, pronouns
 - Theme, main idea, literary devices
 - Example comprehension questions
 `,
-quiz:[
-"Identify noun in: 'The cat sleeps on the mat.'",
-"Underline verb: 'She runs every morning.'",
-"What is theme in a story about friendship overcoming adversity?"
-]
-}
+    quiz: [
+      "Identify noun in: 'The cat sleeps on the mat.'",
+      "Underline verb: 'She runs every morning.'",
+      "What is theme in a story about friendship overcoming adversity?"
+    ]
+  }
 };
 
-let currentSubject='Math';
+let currentSubject = "Math";
 
-Object.keys(subjects).forEach(sub=>{
-const saved=localStorage.getItem('notes_'+sub);
-if(saved) subjects[sub].notes=saved;
+// Load saved notes for each subject from localStorage
+Object.keys(subjects).forEach((sub) => {
+  const saved = localStorage.getItem("notes_" + sub);
+  if (saved) subjects[sub].notes = saved;
 });
 
+// ===== Functions used by your HTML onclick handlers (must be global) =====
 function loadSubject(name, event) {
   currentSubject = name;
-  document.getElementById('subjectTitle').innerText = name;
-  document.getElementById('notesArea').value = subjects[name].notes;
-  document.getElementById('summaryBox').innerText = subjects[name].summary;
+
+  document.getElementById("subjectTitle").innerText = name;
+  document.getElementById("notesArea").value = subjects[name].notes;
+  document.getElementById("summaryBox").innerText = subjects[name].summary;
+
   refreshQuiz();
 
-  document.querySelectorAll('.subject-item').forEach(item => item.classList.remove('active'));
-  event.target.classList.add('active');
+  document.querySelectorAll(".subject-item").forEach((item) => item.classList.remove("active"));
+  if (event && event.target) event.target.classList.add("active");
 }
 
-
-function saveNotes(){
-const text=document.getElementById('notesArea').value;
-subjects[currentSubject].notes=text;
-localStorage.setItem('notes_'+currentSubject,text);
+function saveNotes() {
+  const text = document.getElementById("notesArea").value;
+  subjects[currentSubject].notes = text;
+  localStorage.setItem("notes_" + currentSubject, text);
 }
 
-function toggleNotes(){
-const box=document.getElementById('notesBox');
-const btn=document.getElementById('toggleBtn');
-box.classList.toggle('collapsed');
-btn.innerText=box.classList.contains('collapsed')?'Expand':'Collapse';
+function toggleNotes() {
+  const box = document.getElementById("notesBox");
+  const btn = document.getElementById("toggleBtn");
+
+  box.classList.toggle("collapsed");
+  btn.innerText = box.classList.contains("collapsed") ? "Expand" : "Collapse";
 }
 
-function refreshQuiz(){
-const quizArr=subjects[currentSubject].quiz;
-const selected=[];
-while(selected.length<3){
-const rand=quizArr[Math.floor(Math.random()*quizArr.length)];
-if(!selected.includes(rand)) selected.push(rand);
-}
-document.getElementById('quizList').innerHTML=selected.map(q=>`<li>${q}</li>`).join('');
+function refreshQuiz() {
+  const quizArr = subjects[currentSubject].quiz;
+  const selected = [];
+
+  while (selected.length < 3 && selected.length < quizArr.length) {
+    const rand = quizArr[Math.floor(Math.random() * quizArr.length)];
+    if (!selected.includes(rand)) selected.push(rand);
+  }
+
+  document.getElementById("quizList").innerHTML =
+    selected.map((q) => `<li>${q}</li>`).join("");
 }
 
-function toggleDropdown(){
-document.getElementById('menuItem').classList.toggle('show');
-}
+// ===== Init =====
+applySavedTheme();
 
-loadSubject(currentSubject,{target:document.querySelector('.subject-item.active')});
+// Ensure the initial load highlights the already-active subject item in the sidebar
+loadSubject(currentSubject, { target: document.querySelector(".subject-item.active") });
