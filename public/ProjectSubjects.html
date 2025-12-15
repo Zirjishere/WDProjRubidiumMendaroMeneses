@@ -1,11 +1,454 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>*</title>
+    <link rel="icon" type="image/png" href="Assets/StudyMate.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Dashboard</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: "Segoe UI", Tahoma, sans-serif; }
+body { background: linear-gradient(135deg, #eef2f3, #d9e4ea); min-height: 100vh; }
+
+.header {
+  background-color: #4a90e2; /* header color */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header:hover {
+  transform: translateY(5px); /* moves the header down by 5px */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2); /* optional shadow for depth */
+}
+
+
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 40px; /* adjust as needed */
+  height: 40px;
+}
+
+.site-name {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.header-right a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 18px;
+}
+
+.header-right a:hover {
+  text-decoration: underline;
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+
+
+.header-item { position: relative; cursor: pointer; }
+.header-item > a { color: white; text-decoration: none; user-select: none; }
+.dropdown { display: none; position: absolute; top: 50px; left: 0; background: #4a90e2; border-radius: 10px; overflow: hidden; min-width: 180px; transition: all 0.3s ease; }
+.dropdown a { display: block; padding: 10px 15px; color: white; text-decoration: none; }
+.dropdown a:hover { background: #357ab8; }
+.header-item.show .dropdown { display: block; }
+
+
+.container { width: 90%; max-width: 1200px; margin: 20px auto; background: #fff; border-radius: 25px; padding: 30px; display: grid; grid-template-columns: 2fr 1fr; gap: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+.main h1 { font-size: 42px; color: #9bb9c7; margin-bottom: 10px; }
+
+.notes { margin-top: 20px; }
+.notes-box {
+  margin-top: 10px;
+  background: #f2f2f2;
+  border-radius: 15px;
+  padding: 15px;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  max-height: 200px; /* default expanded height */
+}
+
+.notes-box.collapsed {
+  max-height: 0;
+  padding: 0 15px; /* keep horizontal padding */
+}
+
+textarea { width: 100%; height: 120px; border-radius: 10px; border: none; padding: 10px; resize: vertical; outline: none; font-size: 14px; background: #f2f2f2; }
+
+.summary { margin-top: 20px; }
+.summary-box { margin-top: 10px; background: #f9f9f9; border-radius: 15px; padding: 15px; border-left: 4px solid #9bb9c7; white-space: pre-wrap; }
+
+.quiz { margin-top: 25px; }
+.refresh-btn { margin-top: 10px; background: #4a90e2; border: none; color: white; padding: 6px 14px; border-radius: 15px; cursor: pointer; }
+
+.sidebar h3 { font-size: 30px; color: #9bb9c7; margin-bottom: 20px; }
+.subject-item {
+  background: #f2f2f2;
+  padding: 15px;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.subject-item:hover {
+  background: #e0edf3;
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.subject-item.active {
+  border: 2px solid #9bb9c7;
+  background: #eef6fa;
+  transform: scale(1.1);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+
+.hidden { display: none; }
+
+.footer {
+  background-color: #4a90e2; /* same as header or change color */
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 16px;
+  margin-top: 30px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+
+@media (max-width: 900px) { .container { grid-template-columns: 1fr; } }
+</style>
 </head>
 <body>
 
+<!-- HEADER -->
+<div class="header">
+  <!-- Left: Logo + Site Name -->
+  <div class="header-left">
+    <img src="Assets/StudyMate.png" alt="Logo" class="logo" />
+    <span class="site-name">Studymate</span>
+  </div>
+
+  <!-- Right: Navigation links -->
+  <div class="header-right">
+    <a href="ProjectHome.html">Home</a>
+    <a href="ProjectStudyPlanner.html">Study Planner</a>
+    <a href="ProjectMotivation.html">Motivation</a>
+    <a href="ProjectSubjects.html">Subjects</a>
+    <a href="ProjectAbout.html">About</a>
+  </div>
+</div>
+
+
+<div class="container">
+
+<div class="main">
+<h1 id="subjectTitle">Math</h1>
+
+<div class="notes">
+  <strong>Notes:</strong>
+  <div class="notes-box" id="notesBox">
+    <textarea id="notesArea" placeholder="Type your notes here..." oninput="saveNotes()"></textarea>
+  </div>
+  <button onclick="toggleNotes()" id="toggleBtn">Collapse</button>
+</div>
+
+<div class="summary">
+<strong>Summary / Review:</strong>
+<div class="summary-box" id="summaryBox"></div>
+</div>
+
+<div class="quiz" id="subjectQuiz">
+<strong>Mini Quiz:</strong>
+<ol id="quizList"></ol>
+<button class="refresh-btn" onclick="refreshQuiz()">Refresh Quiz</button>
+</div>
+</div>
+
+<div class="sidebar">
+<h3>Subjects</h3>
+<div class="subject-item active" onclick="loadSubject('Math', event)">Math</div>
+<div class="subject-item" onclick="loadSubject('Physics', event)">Physics</div>
+<div class="subject-item" onclick="loadSubject('Statistics', event)">Statistics</div>
+<div class="subject-item" onclick="loadSubject('Chemistry', event)">Chemistry</div>
+<div class="subject-item" onclick="loadSubject('Biology', event)">Biology</div>
+<div class="subject-item" onclick="loadSubject('Social Science', event)">Social Science</div>
+<div class="subject-item" onclick="loadSubject('Computer Science', event)">Computer Science</div>
+<div class="subject-item" onclick="loadSubject('Filipino', event)">Filipino</div>
+<div class="subject-item" onclick="loadSubject('English', event)">English</div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© 2025 Studymate | All Rights Reserved</p>
+</footer>
+
+</div>
+
+
+
+<script>
+const subjects = {
+Math: {
+notes:"",
+summary:`Remainder Theorem, Factor Theorem, Descartes' Rule of Signs:
+- Remainder Theorem: The remainder of f(x) divided by (x-a) is f(a).
+- Factor Theorem: If f(a)=0, then (x-a) is a factor of f(x).
+- Descartes' Rule of Signs: Determines possible number of positive and negative real roots.
+
+Rational Root Theorem:
+- Provides all possible rational roots of a polynomial.
+
+End Behavior of Polynomials:
+- Determines how the function behaves as x→±∞.
+
+Sketching Graphs:
+- Identify zeros, multiplicities, end behavior.
+
+Square Root Functions:
+- Domain x≥0, range y≥0.
+
+Piecewise-Defined Functions:
+- Function defined by multiple sub-functions over intervals.
+
+Transformation of Functions:
+- Translation, Reflection, Scaling, Sequences.
+
+Inverse Functions & Graphs:
+- Function must be one-to-one. Graph reflected over y=x.
+`,
+quiz:[
+"Find remainder when f(x)=x^3-2x^2+x-5 divided by x-1.",
+"Determine if x-2 is a factor of f(x)=x^3-4x^2+x+6.",
+"Use Rational Root Theorem to find possible rational roots of f(x)=2x^3-3x^2+x-1."
+]
+},
+
+Physics:{
+notes:"",
+summary:`Components Method of Vectors:
+- Resolve vectors into perpendicular components for calculations.
+
+Projectile Motion:
+- Horizontal motion x=vt
+- Vertical motion y=v0y*t - 0.5*g*t^2
+- Max height, range calculations.
+
+Normal Force:
+- Force perpendicular to surface. Fn = m*g*cosθ for incline.
+
+Apparent Motion:
+- Observed motion relative to reference frame. Includes relative velocity equations.
+`,
+quiz:[
+"A projectile launched at 20 m/s at 30°. Find max height.",
+"Two vectors A=5i+3j and B=-2i+4j. Find resultant using components.",
+"A box rests on 30° incline. Calculate normal force."
+]
+},
+
+Statistics:{
+notes:"",
+summary:`Random Variables:
+- Discrete and continuous types. Represent possible outcomes.
+
+Binomial Distribution:
+- P(x) = (nCx)(p^x)(1-p)^(n-x)
+- Example problems with trials and success probability.
+
+Normal Distribution:
+- Bell curve, mean μ, standard deviation σ.
+- Z-score calculations for probabilities.
+`,
+quiz:[
+"Coin flipped 5 times. Probability of exactly 3 heads?",
+"Heights normal distribution mean 160cm, SD 10cm. Probability taller than 170cm?",
+"Define a random variable for number of defective items in sample of 10."
+]
+},
+
+Chemistry:{
+notes:"",
+summary:`Chemical Structures:
+- Lewis structures, bonding, VSEPR geometry.
+
+Molecular Geometry & VBT:
+- Predict shape using valence bond theory.
+
+Nomenclature:
+- Rules for naming inorganic compounds.
+
+Writing & Balancing Equations:
+- Example reactions and balancing techniques.
+
+Types of Reactions:
+- Synthesis, decomposition, single & double replacement, combustion.
+`,
+quiz:[
+"Draw Lewis structure of H2O and NH3.",
+"Balance: Fe + O2 → Fe2O3",
+"Name compound: K2SO4"
+]
+},
+
+Biology:{
+notes:"",
+summary:`Microscopy & Tissues:
+- Identify animal and plant tissue types under microscope.
+
+Nutrition & Digestion:
+- Digestive organs, enzyme functions, nutrient absorption.
+
+Transport/Circulation:
+- Circulatory system, oxygen transport, blood flow.
+`,
+quiz:[
+"Identify tissue types in microscope slide.",
+"Describe path of food through digestive system.",
+"Explain oxygen transport in blood."
+]
+},
+
+"Social Science":{
+notes:"",
+summary:`American Revolution (1775-1783):
+- Colonists in North America rebelled against British rule.
+- Key causes: taxation without representation, desire for self-governance.
+- Outcome: Independence of USA, establishment of democratic government.
+
+French Revolution (1789-1799):
+- People in France overthrew monarchy due to inequality, financial crisis.
+- Key causes: social inequality, enlightenment ideas, unfair taxation.
+- Outcome: End of monarchy, rise of republic, spread of revolutionary ideas.
+
+Industrial Revolution (18th-19th centuries):
+- A period of major industrialization in 18th-19th centuries.
+- Key inventions: steam engine, spinning jenny, power loom.
+- Impact: Urbanization, economic growth, social changes.
+`,
+quiz:[
+"Explain causes of French Revolution.",
+"Compare outcomes of American and French Revolutions.",
+"Identify inventions of Industrial Revolution and impact."
+]
+},
+
+"Computer Science":{
+notes:"",
+summary:`Arrays:
+- Store multiple elements.
+- Access by index.
+- Looping and array operations (sum, max/min, sorting).
+- Example: declare, push, pop, traverse.
+`,
+quiz:[
+"Write program to sum elements in array.",
+"Sort array [3,1,4,1,5] ascending.",
+"Find max and min elements of array."
+]
+},
+
+Filipino:{
+notes:"",
+summary:`Pangngalan, Pandiwa, Paksa, Tayutay, Sukat:
+- Pangngalan: noun
+- Pandiwa: verb
+- Paksa: subject/topic
+- Tayutay: figurative language
+- Sukat: meter in poetry
+`,
+quiz:[
+"Identify pangngalan in: 'Ang aso ay tumakbo sa parke.'",
+"Piliin ang pandiwa: 'Kumain si Ana ng mangga.'",
+"Ano ang paksa: 'Ang mga bata ay naglalaro sa likod-bahay.'"
+]
+},
+
+English:{
+notes:"",
+summary:`Grammar & Literary Concepts:
+- Nouns, verbs, adjectives, pronouns
+- Theme, main idea, literary devices
+- Example comprehension questions
+`,
+quiz:[
+"Identify noun in: 'The cat sleeps on the mat.'",
+"Underline verb: 'She runs every morning.'",
+"What is theme in a story about friendship overcoming adversity?"
+]
+}
+};
+
+let currentSubject='Math';
+
+Object.keys(subjects).forEach(sub=>{
+const saved=localStorage.getItem('notes_'+sub);
+if(saved) subjects[sub].notes=saved;
+});
+
+function loadSubject(name, event) {
+  currentSubject = name;
+  document.getElementById('subjectTitle').innerText = name;
+  document.getElementById('notesArea').value = subjects[name].notes;
+  document.getElementById('summaryBox').innerText = subjects[name].summary;
+  refreshQuiz();
+
+  document.querySelectorAll('.subject-item').forEach(item => item.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+
+function saveNotes(){
+const text=document.getElementById('notesArea').value;
+subjects[currentSubject].notes=text;
+localStorage.setItem('notes_'+currentSubject,text);
+}
+
+function toggleNotes(){
+const box=document.getElementById('notesBox');
+const btn=document.getElementById('toggleBtn');
+box.classList.toggle('collapsed');
+btn.innerText=box.classList.contains('collapsed')?'Expand':'Collapse';
+}
+
+function refreshQuiz(){
+const quizArr=subjects[currentSubject].quiz;
+const selected=[];
+while(selected.length<3){
+const rand=quizArr[Math.floor(Math.random()*quizArr.length)];
+if(!selected.includes(rand)) selected.push(rand);
+}
+document.getElementById('quizList').innerHTML=selected.map(q=>`<li>${q}</li>`).join('');
+}
+
+function toggleDropdown(){
+document.getElementById('menuItem').classList.toggle('show');
+}
+
+loadSubject(currentSubject,{target:document.querySelector('.subject-item.active')});
+
+</script>
 </body>
 </html>
+
+
+
+
+
