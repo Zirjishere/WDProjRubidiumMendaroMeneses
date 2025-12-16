@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="0; url=public/1-ProjectHome.html">
+  <title>StudyMate - Redirecting...</title>
+  <link rel="icon" type="image/png" href="assets/StudyMate.png">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    .container {
+      text-align: center;
+    }
+    .loader {
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid #667eea;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to StudyMate</h1>
+    <div class="loader"></div>
+    <p>Redirecting to your study companion...</p>
+    <p><a href="public/1-ProjectHome.html" style="color: white;">Click here if not redirected automatically</a></p>
+  </div>
+  
+  <script>
+    // Backup redirect in case meta refresh doesn't work
+    setTimeout(function() {
+      window.location.href = 'public/1-ProjectHome.html';
+    }, 100);
+  </script>
+</body>
+</html>
