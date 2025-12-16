@@ -1,199 +1,276 @@
+/* =========================================================
+   styleHome.css (Home page)
+   Theme: same variable colors as your other pages
+========================================================= */
+
 /* ===== Color Variables for Light and Dark Modes ===== */
 :root {
-    --bg-color: #9bb9c7;
-    --text-color: #357ab8;
-    --box-bg: #ffffff;
-    --box-shadow: rgba(53, 122, 184, 0.2);
-    --navbar-bg: #9bb9c7;
-    --link-color: #357ab8;
+  --bg-color: #9bb9c7;
+  --text-color: #357ab8;
+  --box-bg: #ffffff;
+  --box-shadow: rgba(53, 122, 184, 0.2);
+  --navbar-bg: #9bb9c7;
+  --link-color: #357ab8;
 }
 
 .dark-mode {
-    --bg-color: #1f2a44;
-    --text-color: #f0f4f8;
-    --box-bg: #2e3a5e;
-    --box-shadow: rgba(155, 185, 199, 0.35);
-    --navbar-bg: #284a7a;
-    --link-color: #9bb9c7;
+  --bg-color: #1f2a44;
+  --text-color: #f0f4f8;
+  --box-bg: #2e3a5e;
+  --box-shadow: rgba(155, 185, 199, 0.35);
+  --navbar-bg: #284a7a;
+  --link-color: #9bb9c7;
 }
 
-/* ===== Make it Consistent with Sizes ===== */
+/* ===== Reset ===== */
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-/* Make the sticky/flexible footer layout work */
 html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-/* ===== Body Layout ===== */
+/* ===== Body ===== */
 body {
-    font-family: Arial, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    transition: background-color 0.2s, color 0.2s;
+  font-family: Arial, sans-serif; /* same as your other pages */
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.2s, color 0.2s;
 
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-/* ===== Navbar (Fixed) ===== */
+/* ===== Navbar ===== */
 .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: var(--navbar-bg);
-    padding: 10px 20px;
-    position: fixed;
-    top: 0;
-    left: 0;          /* important */
-    right: 0;         /* important */
-    width: 100%;      /* full width */
-    z-index: 1000;
-    box-shadow: 0 2px 5px var(--box-shadow);
-    box-sizing: border-box; /* makes padding not cause overflow */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: var(--navbar-bg);
+  padding: 10px 20px;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+
+  z-index: 1000;
+  box-shadow: 0 2px 5px var(--box-shadow);
 }
 
 .navbar-left {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
 }
 
 .navbar-title {
-    font-weight: bold;
-    margin-right: 20px;
+  font-weight: bold;
+  margin-right: 10px;
 }
 
 #theme-toggle {
-    padding: 5px 10px;
-    background-color: var(--link-color);
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-left: 10px;
+  padding: 5px 10px;
+  background-color: var(--link-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
-.navbar-right {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+.navbar-right a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: var(--link-color);
+  transition: color 0.3s;
 }
 
-.navbar a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: var(--link-color);
-    transition: color 0.3s;
+.navbar-right a:hover {
+  color: var(--text-color);
 }
 
-.navbar a:hover {
-    color: var(--text-color);
-}
-
-/* ===== Main Content Area ===== */
-.content {
-    margin-top: 80px; /* space for fixed navbar */
-    padding: 20px 40px;
-
-    margin-right: 300px; /* space for calendar on right (your future feature) */
-
-    flex: 1;              /* IMPORTANT: pushes footer down when content is short */
-    padding-bottom: 20px; /* small spacing only */
-}
-
-/* ===== Box/Card Styles ===== */
+/* ===== Shared box/button styles  ===== */
 .box {
-    background-color: var(--box-bg);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px var(--box-shadow);
-    padding: 20px;
-    margin-bottom: 20px;
-    transition: box-shadow 0.3s;
+  background-color: var(--box-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px var(--box-shadow);
+  padding: 20px;
 }
 
-.small-box {
-    max-width: 50%;
-    padding: 15px;
-    text-align: center;
-}
-
-.box:hover {
-    box-shadow: 0 6px 12px var(--box-shadow);
-}
-
-/* ===== Button Styles ===== */
 .button {
-    display: inline-block;
-    padding: 10px 15px;
-    background-color: var(--link-color);
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 10px;
-    transition: background-color 0.3s;
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: var(--link-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  margin-top: 10px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .button:hover {
-    background-color: var(--text-color);
-    color: var(--bg-color);
+  background-color: var(--text-color);
+  color: var(--bg-color);
 }
 
-/* ===== Clock & Quote ===== */
-#clock {
-    font-size: 1.5em;
-    font-weight: bold;
-    text-align: center;
-    margin: 10px 0;
+/* ===== Intro layout (image left, content right) ===== */
+main {
+  margin-top: 80px; /* space for fixed navbar */
+}
+
+.intro {
+  width: 95%;
+  max-width: 10000px;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.intro-media {
+  margin: 0;
+}
+
+.intro-media img {
+  width: 100%;
+  max-height: 1300px;       /* keeps picture from being too big */
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 6px 15px var(--box-shadow);
+  display: block;
+}
+
+.intro-media figcaption {
+  margin-top: 10px;
+  font-size: 0.95rem;
+}
+
+.intro-text h1 {
+  font-size: 42px;
+  margin: 0 0 16px 0;
+}
+
+.intro-text p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 0 0 16px 0;
+}
+
+/* Feature boxes inside intro */
+.feature-box {
+  margin-top: 18px;
 }
 
 #motivational-quote {
-    font-style: italic;
-    text-align: center;
-    margin: 10px 0;
+  font-style: italic;
+  margin: 10px 0 0 0;
+  white-space: normal;
 }
 
-/* ===== Footer (Flexible / Not Fixed) ===== */
+#clock {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* ===== Authors section ===== */
+.authors {
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.authors h2 {
+  margin: 40px 0 10px;
+  font-size: 36px;
+}
+
+.authors-subtext {
+  max-width: 800px;
+  margin: 0 auto 25px;
+  line-height: 1.6;
+}
+
+.authors-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.author-card {
+  width: 320px;
+}
+
+.author-card img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.authors-actions {
+  margin-top: 20px;
+}
+
+/* ===== Bottom quick links ===== */
+.quick-links {
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px auto 40px;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(240px, 1fr));
+  gap: 20px;
+
+  background: rgba(53, 122, 184, 0.2);
+  border-radius: 18px;
+  padding: 25px;
+}
+
+.quick-card h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+/* ===== Footer ===== */
 footer {
-    margin-top: auto; /* IMPORTANT: keeps footer at bottom if page is short */
-    width: 100%;
-    text-align: center;
-    padding: 0 20px 20px;
+  margin-top: auto;
+  width: 100%;
+  text-align: center;
+  padding: 0 20px 20px;
 }
 
-/* Make footer box look consistent */
 footer .box {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 /* ===== Responsive ===== */
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px;
-        width: 100%;
-    }
+@media (max-width: 900px) {
+  .intro {
+    grid-template-columns: 1fr;
+  }
 
-    .navbar-left, .navbar-right {
-        width: 100%;
-        justify-content: space-between;
-    }
+  .quick-links {
+    grid-template-columns: 1fr;
+  }
 
-    .content {
-        padding: 20px 20px;
-        margin-right: 0;
-    }
-
-    .small-box {
-        max-width: 100%;
-    }
-
-    #clock {
-        font-size: 2em;
-    }
+  main {
+    margin-top: 120px;
+  }
 }
