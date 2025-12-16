@@ -99,8 +99,6 @@ body {
 .content {
     margin-top: 80px; /* space for fixed navbar */
     padding: 20px 40px;
-
-    flex: 1; /* IMPORTANT: pushes footer down when content is short */
     padding-bottom: 20px; /* small spacing only */
 }
 
