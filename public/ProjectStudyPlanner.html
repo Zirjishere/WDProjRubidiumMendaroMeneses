@@ -1,11 +1,323 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>*</title>
+    <meta name="description" content="StudyMate Study Planner: Add, edit, and delete study tasks with localStorage saving.">
+    <meta name="author" content="Zirjan Hero F. Mendaro & Sasha Victoria Meneses">
+
+    <title>StudyMate | Study Planner</title>
+
+    <style>
+        :root {
+    --bg-color: #9bb9c7;
+    --text-color: #357ab8;
+    --box-bg: #ffffff;
+    --box-shadow: rgba(53, 122, 184, 0.2);
+    --navbar-bg: #9bb9c7;
+    --link-color: #357ab8;
+}
+
+.dark-mode {
+    --bg-color: #1f2a44;
+    --text-color: #f0f4f8;
+    --box-bg: #2e3a5e;
+    --box-shadow: rgba(155, 185, 199, 0.35);
+    --navbar-bg: #284a7a;
+    --link-color: #9bb9c7;
+}
+
+/* ===== Global Reset / Consistency ===== */
+* {
+    box-sizing: border-box;
+}
+
+/* Make the sticky/flexible footer layout work */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== Body Layout (Flex Column) ===== */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ===== Navbar (Fixed) ===== */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--navbar-bg);
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;          /* important */
+    right: 0;         /* important */
+    width: 100%;      /* full width */
+    z-index: 1000;
+    box-shadow: 0 2px 5px var(--box-shadow);
+    box-sizing: border-box; /* makes padding not cause overflow */
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-title {
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+#theme-toggle {
+    padding: 5px 10px;
+    background-color: var(--link-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.navbar a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: var(--link-color);
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: var(--text-color);
+}
+
+/* ===== Main Content Area ===== */
+.content {
+    margin-top: 80px; /* space for fixed navbar */
+    padding: 20px 40px;
+
+    flex: 1; /* IMPORTANT: pushes footer down when content is short */
+    padding-bottom: 20px; /* small spacing only */
+}
+
+/* ===== Box/Card Styles ===== */
+.box {
+    background-color: var(--box-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--box-shadow);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: box-shadow 0.3s;
+}
+
+.box:hover {
+    box-shadow: 0 6px 12px var(--box-shadow);
+}
+
+/* ===== Task Controls Row ===== */
+.task-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap; /* wraps on smaller screens */
+    margin-bottom: 15px;
+}
+
+/* Input and Button for task entry */
+#task-input {
+    padding: 10px;
+    flex: 1;              /* grows to fill space */
+    min-width: 220px;     /* prevents becoming too small */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#add-task-btn {
+    padding: 10px 15px;
+    background-color: var(--link-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#add-task-btn:hover {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+}
+
+/* ===== Task List ===== */
+#task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#task-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 10px;
+    margin-bottom: 10px;
+
+    background-color: var(--box-bg);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px var(--box-shadow);
+}
+
+.task-text {
+    flex: 1;
+    margin-right: 10px;
+    word-break: break-word; /* prevents long tasks from breaking layout */
+}
+
+.edit-btn, .delete-btn {
+    padding: 5px 10px;
+    margin-left: 5px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* ===== Footer (Flexible / Not Fixed) ===== */
+footer {
+    margin-top: auto; /* IMPORTANT: keeps footer at bottom if page is short */
+    width: 100%;
+    text-align: center;
+    padding: 0 20px 20px;
+}
+
+/* Make footer box look consistent */
+footer .box {
+    margin-bottom: 0;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+        width: 100%;
+    }
+
+    .navbar-left, .navbar-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .content {
+        padding: 20px 20px;
+    }
+
+    #task-list li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .edit-btn, .delete-btn {
+        margin-left: 0;
+    }
+}
+    </style>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="Assets/StudyMate.png">
+
+    <!-- Planner CSS -->
+    <link rel="stylesheet" href="stylePlanner.css">
 </head>
 <body>
+    <!-- ===== HEADER / NAVBAR (Fixed) ===== -->
+    <header>
+        <div class="navbar">
+            <!-- Left side: logo, title, dark mode button -->
+            <div class="navbar-left">
+                <img src="Assets/StudyMate.png" alt="StudyMate Logo" width="40" height="40" style="margin-right:10px;">
+                <span class="navbar-title">StudyMate</span>
+                <button id="theme-toggle" type="button">Toggle Dark Mode</button>
+            </div>
 
+            <!-- Right side: page links -->
+            <nav class="navbar-right" aria-label="Main Navigation">
+                <a href="ProjectHome.html">Home</a>
+                <a href="ProjectStudyPlanner.html" aria-current="page">Study Planner</a>
+                <a href="ProjectMotivation.html">Motivation</a>
+                <a href="ProjectSubjects.html">Subjects</a>
+                <a href="ProjectAbout.html">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="content">
+        <!-- Planner intro box -->
+        <section class="box">
+            <h1>Study Planner</h1>
+
+            <p>
+                Add study tasks you need to complete and keep track of them in one place.
+                Your tasks are saved automatically using <strong>localStorage</strong>, so they remain even after refreshing the page.
+            </p>
+
+            <p>
+                Use the edit button to update tasks, or delete tasks once you are finished.
+                Staying consistent helps build strong study habits over time.
+            </p>
+        </section>
+
+        <!-- Planner controls + list -->
+        <section class="box" aria-label="Task List Section">
+            <h2>My Tasks</h2>
+
+            <!-- Task input row -->
+            <div class="task-controls">
+                <input type="text" id="task-input" placeholder="Enter a new study task...">
+                <button id="add-task-btn" type="button">Add Task</button>
+            </div>
+
+            <!-- Tasks will be inserted here by JS -->
+            <ul id="task-list"></ul>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER (Flexible / Not fixed) ===== -->
+    <footer>
+        <div class="box">
+            <p>&copy; 2025 StudyMate | All Rights Reserved</p>
+            <p>Sources (APA): Update this section with your image and quote sources.</p>
+        </div>
+    </footer>
+
+    <!-- Planner JS -->
+    <script src="B-StudyPlanner.js"></script>
 </body>
 </html>
