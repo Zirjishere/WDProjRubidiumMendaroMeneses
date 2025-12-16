@@ -1,15 +1,47 @@
-// ===== Dark Mode Toggle =====
+/* =========================================================
+   D-Subjects.js (Used on: 4-ProjectSubjects.html)
+   
+   PURPOSE:
+   This file manages the Subjects page functionality, allowing
+   users to view different subjects, take notes, read summaries,
+   and answer random quiz questions for each subject.
+   
+   FEATURES:
+   1) Switch between 9 different subjects
+   2) Write and save notes for each subject (localStorage)
+   3) View subject summaries/reviews
+   4) Generate random quiz questions
+   5) Expand/collapse notes section
+   6) Dark mode toggle with persistence
+   
+   HOW IT WORKS:
+   - All subject data (summaries, quiz questions) stored in objects
+   - Notes are saved to localStorage per subject
+   - Quiz questions are randomly selected from a pool
+   - Active subject is highlighted in sidebar
+========================================================= */
+
+// ===== DARK MODE TOGGLE =====
+// Get the dark mode toggle button
 const themeToggleBtn = document.getElementById("theme-toggle");
 
+// Apply the saved theme preference when page loads
 function applySavedTheme() {
+  // Check localStorage for saved theme preference
   const savedTheme = localStorage.getItem("theme");
+  
+  // If dark mode was previously selected, apply it
   if (savedTheme === "dark") document.body.classList.add("dark-mode");
   else document.body.classList.remove("dark-mode");
 }
 
+// Add click event listener to theme toggle button
 if (themeToggleBtn) {
   themeToggleBtn.addEventListener("click", () => {
+    // Toggle the dark-mode class on body
     document.body.classList.toggle("dark-mode");
+    
+    // Save the preference to localStorage
     localStorage.setItem(
       "theme",
       document.body.classList.contains("dark-mode") ? "dark" : "light"
@@ -17,7 +49,10 @@ if (themeToggleBtn) {
   });
 }
 
-// ===== Subjects Notes =====
+
+// ===== SUBJECTS DATA STRUCTURE =====
+// Object containing all subject information
+// Each subject has: notes (user-written), summary (pre-written content), quiz (array of questions)
 const subjects = {
   Math: {
     notes: "",
@@ -333,56 +368,102 @@ Industrial Revolution (18th-19th centuries):
   }
 };
 
+
+// ===== CURRENT SUBJECT TRACKER =====
+// Keeps track of which subject is currently being viewed
 let currentSubject = "Math";
 
-// Load saved notes for each subject from localStorage
+// ===== LOAD SAVED NOTES FROM LOCALSTORAGE =====
+// When page loads, retrieve any saved notes for each subject
+// Loop through all subjects and check if notes exist in localStorage
 Object.keys(subjects).forEach((sub) => {
   const saved = localStorage.getItem("notes_" + sub);
+  // If notes exist, load them into the subjects object
   if (saved) subjects[sub].notes = saved;
 });
 
-// ===== Functions used by your HTML onclick handlers =====
+// ===== LOAD SUBJECT FUNCTION =====
+// This function is called when user clicks on a subject in the sidebar
+// @param name - The name of the subject to load
+// @param event - The click event (used to highlight active subject)
 function loadSubject(name, event) {
+  // Update the current subject
   currentSubject = name;
 
+  // Update the page title to show current subject
   document.getElementById("subjectTitle").innerText = name;
+  
+  // Load the saved notes for this subject into the textarea
   document.getElementById("notesArea").value = subjects[name].notes;
+  
+  // Display the summary/review content for this subject
   document.getElementById("summaryBox").innerText = subjects[name].summary;
 
+  // Generate new random quiz questions for this subject
   refreshQuiz();
 
+  // Remove 'active' class from all subject items in sidebar
   document.querySelectorAll(".subject-item").forEach((item) => item.classList.remove("active"));
+  
+  // Add 'active' class to the clicked subject item
   if (event && event.target) event.target.classList.add("active");
 }
 
+// ===== SAVE NOTES FUNCTION =====
+// This function is called whenever user types in the notes textarea
+// It automatically saves the notes to localStorage
 function saveNotes() {
+  // Get the current text from the notes textarea
   const text = document.getElementById("notesArea").value;
+  
+  // Update the notes in the subjects object
   subjects[currentSubject].notes = text;
+  
+  // Save to localStorage with a unique key for each subject
   localStorage.setItem("notes_" + currentSubject, text);
 }
 
+// ===== TOGGLE NOTES VISIBILITY =====
+// This function expands or collapses the notes section
 function toggleNotes() {
+  // Get the notes box and toggle button elements
   const box = document.getElementById("notesBox");
   const btn = document.getElementById("toggleBtn");
 
+  // Toggle the 'collapsed' class to show/hide notes
   box.classList.toggle("collapsed");
+  
+  // Update button text based on current state
   btn.innerText = box.classList.contains("collapsed") ? "Expand" : "Collapse";
 }
 
+// ===== REFRESH QUIZ FUNCTION =====
+// This function generates 3 random quiz questions from the current subject's quiz pool
 function refreshQuiz() {
+  // Get the quiz questions array for current subject
   const quizArr = subjects[currentSubject].quiz;
+  
+  // Array to store selected questions (prevents duplicates)
   const selected = [];
 
+  // Keep selecting random questions until we have 3 unique ones
   while (selected.length < 3 && selected.length < quizArr.length) {
+    // Pick a random question from the quiz array
     const rand = quizArr[Math.floor(Math.random() * quizArr.length)];
+    
+    // Only add if not already selected (prevents duplicates)
     if (!selected.includes(rand)) selected.push(rand);
   }
 
+  // Display the selected questions as list items
   document.getElementById("quizList").innerHTML =
     selected.map((q) => `<li>${q}</li>`).join("");
 }
 
+// ===== INITIALIZATION =====
+// Apply saved theme when page loads
 applySavedTheme();
 
-// Ensure the initial load highlights the already-active subject item in the sidebar
+// Load the initial subject (Math) and highlight it in the sidebar
+// This ensures the page shows content when first loaded
 loadSubject(currentSubject, { target: document.querySelector(".subject-item.active") });

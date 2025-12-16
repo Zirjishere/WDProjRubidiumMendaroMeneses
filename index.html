@@ -1,50 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- ===== CHARACTER ENCODING ===== -->
+  <!-- Sets the character encoding to UTF-8 for proper text display -->
   <meta charset="UTF-8">
+  
+  <!-- ===== VIEWPORT SETTINGS ===== -->
+  <!-- Makes the website responsive on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- ===== AUTO-REDIRECT META TAG ===== -->
+  <!-- Automatically redirects to the home page after 0 seconds -->
+  <!-- This is the primary redirect method for GitHub Pages -->
   <meta http-equiv="refresh" content="0; url=public/1-ProjectHome.html">
+  
+  <!-- ===== PAGE TITLE ===== -->
+  <!-- Shows in browser tab while redirecting -->
   <title>StudyMate - Redirecting...</title>
+  
+  <!-- ===== FAVICON ===== -->
+  <!-- Small icon that appears in the browser tab -->
+  <!-- Points to the StudyMate logo in the assets folder -->
   <link rel="icon" type="image/png" href="assets/StudyMate.png">
+  
+  <!-- ===== INLINE STYLES ===== -->
+  <!-- Styles for the loading/redirect page -->
   <style>
+    /* Body styling - centers content and adds gradient background */
     body {
       font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;              /* Uses flexbox for centering */
+      justify-content: center;    /* Centers horizontally */
+      align-items: center;        /* Centers vertically */
+      height: 100vh;              /* Full viewport height */
+      margin: 0;                  /* Removes default margin */
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Purple gradient */
       color: white;
     }
+    
+    /* Container for centered content */
     .container {
       text-align: center;
     }
+    
+    /* Loading spinner animation */
     .loader {
-      border: 5px solid #f3f3f3;
-      border-top: 5px solid #667eea;
-      border-radius: 50%;
+      border: 5px solid #f3f3f3;        /* Light grey border */
+      border-top: 5px solid #667eea;    /* Blue top border (creates spinning effect) */
+      border-radius: 50%;                /* Makes it circular */
       width: 50px;
       height: 50px;
-      animation: spin 1s linear infinite;
-      margin: 20px auto;
+      animation: spin 1s linear infinite; /* Applies spin animation */
+      margin: 20px auto;                  /* Centers the loader */
     }
+    
+    /* Keyframe animation for spinning loader */
     @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      0% { transform: rotate(0deg); }    /* Start position */
+      100% { transform: rotate(360deg); } /* End position (full rotation) */
     }
   </style>
 </head>
 <body>
+  <!-- ===== MAIN CONTAINER ===== -->
+  <!-- Displays loading message while redirect happens -->
   <div class="container">
     <h1>Welcome to StudyMate</h1>
+    
+    <!-- Loading spinner -->
     <div class="loader"></div>
+    
     <p>Redirecting to your study companion...</p>
+    
+    <!-- Manual fallback link in case auto-redirect fails -->
     <p><a href="public/1-ProjectHome.html" style="color: white;">Click here if not redirected automatically</a></p>
   </div>
   
+  <!-- ===== JAVASCRIPT REDIRECT ===== -->
+  <!-- Backup redirect method using JavaScript -->
+  <!-- This ensures redirect works even if meta refresh is disabled -->
   <script>
-    // Backup redirect in case meta refresh doesn't work
+    // setTimeout waits 100 milliseconds then redirects to home page
+    // This is a backup in case the meta refresh tag doesn't work
     setTimeout(function() {
       window.location.href = 'public/1-ProjectHome.html';
     }, 100);
