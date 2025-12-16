@@ -1,0 +1,249 @@
+/* ===== Color Variables for Light and Dark Modes ===== */
+:root {
+  --bg-color: #9bb9c7;
+  --text-color: #357ab8;
+  --box-bg: #ffffff;
+  --box-shadow: rgba(53, 122, 184, 0.2);
+  --navbar-bg: #9bb9c7;
+  --link-color: #357ab8;
+}
+
+.dark-mode {
+  --bg-color: #1f2a44;
+  --text-color: #f0f4f8;
+  --box-bg: #2e3a5e;
+  --box-shadow: rgba(155, 185, 199, 0.35);
+  --navbar-bg: #284a7a;
+  --link-color: #9bb9c7;
+}
+
+/* ===== Base ===== */
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.2s, color 0.2s;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* ===== Navbar (same style system as Home/Planner) ===== */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: var(--navbar-bg);
+  padding: 10px 20px;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+
+  z-index: 1000;
+  box-shadow: 0 2px 5px var(--box-shadow);
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+.navbar-title {
+  font-weight: bold;
+}
+
+#theme-toggle {
+  padding: 5px 10px;
+  background-color: var(--link-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-right a {
+  text-decoration: none;
+  color: var(--link-color);
+  transition: color 0.3s;
+  margin: 0 5px;
+}
+
+.navbar-right a:hover {
+  color: var(--text-color);
+}
+
+/* ===== Layout ===== */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 90px auto 20px; /* space for fixed navbar */
+  background: var(--box-bg);
+  border-radius: 18px;
+  padding: 25px;
+
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 25px;
+
+  box-shadow: 0 6px 15px var(--box-shadow);
+}
+
+/* ===== Main ===== */
+.main h1 {
+  font-size: 40px;
+  margin: 0 0 10px 0;
+  color: var(--text-color);
+}
+
+.notes { margin-top: 15px; }
+
+.notes-box {
+  margin-top: 10px;
+  background: rgba(0,0,0,0.06);
+  border-radius: 12px;
+  padding: 12px;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  max-height: 220px;
+}
+
+.dark-mode .notes-box {
+  background: rgba(255,255,255,0.08);
+}
+
+.notes-box.collapsed {
+  max-height: 0;
+  padding: 0 12px;
+}
+
+textarea {
+  width: 100%;
+  height: 120px;
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  resize: vertical;
+  outline: none;
+  font-size: 14px;
+
+  background: transparent;
+  color: inherit;
+}
+
+.summary { margin-top: 15px; }
+
+.summary-box {
+  margin-top: 10px;
+  background: rgba(0,0,0,0.04);
+  border-radius: 12px;
+  padding: 12px;
+  border-left: 4px solid var(--link-color);
+  white-space: pre-wrap;
+}
+
+.dark-mode .summary-box {
+  background: rgba(255,255,255,0.06);
+}
+
+.quiz { margin-top: 18px; }
+
+/* ===== Buttons (same style idea as Home/Planner) ===== */
+.button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: var(--link-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.button:hover {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+}
+
+/* ===== Sidebar ===== */
+.sidebar h3 {
+  margin: 0 0 15px 0;
+  color: var(--text-color);
+  font-size: 28px;
+}
+
+.subject-item {
+  background: rgba(0,0,0,0.06);
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: box-shadow 0.2s, background-color 0.2s;
+}
+
+.dark-mode .subject-item {
+  background: rgba(255,255,255,0.08);
+}
+
+.subject-item:hover {
+  box-shadow: 0 6px 12px var(--box-shadow);
+}
+
+.subject-item.active {
+  border: 2px solid var(--link-color);
+}
+
+/* ===== Footer ===== */
+.footer {
+  margin-top: auto;      /* keeps footer at bottom if page is short */
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  background-color: var(--navbar-bg);  
+  color: white;                         
+  box-shadow: 0 -2px 5px var(--box-shadow);
+}
+
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+    margin-top: 120px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .navbar-right {
+    flex-wrap: wrap;
+  }
+}

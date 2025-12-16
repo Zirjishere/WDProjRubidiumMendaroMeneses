@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="StudyMate a Personal Study Companion Tool">
-    <meta name="author" content="Zirjan Hero F. Mendaro & Sasha Victoria Meneses">
-    <title> StudyMate | Home </title>
-    <style>
-        /* ===== Color Variables for Light and Dark Modes ===== */
+/* ===== Color Variables for Light and Dark Modes ===== */
 :root {
     --bg-color: #9bb9c7;
     --text-color: #357ab8;
@@ -206,27 +197,3 @@ footer .box {
         font-size: 2em;
     }
 }
-    </style>
-    <link rel="icon" type="image/png" href="Assets/StudyMate.png">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-     <div class = "navbar">
-        <img src="Assets/StudyMate.png" alt="Logo" width="40" height="40" style="margin-right:10px;">
-        <span class="navbar-title">Navigation Bar</span>
-        <a href="ProjectHome.html">Home</a>
-        <a href="ProjectAbout.html">About</a>
-        <a href="ProjectFeatures.html">Features</a>
-        <a href="ProjectContact.html">Contact</a>
-    </div>
-    </header>
-    <div class="content">
-        <h1>Welcome to StudyMate!</h1>
-        <p>Your personal study companion tool designed to help you organize your study sessions, track your progress, and stay motivated.</p>
-    </div>
-
-
-
-</body>
-</html>
