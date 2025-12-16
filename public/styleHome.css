@@ -1,85 +1,115 @@
 /* =========================================================
-   styleHome.css (Home page)
-   Theme: same variable colors as your other pages
+   Global Reset & Variables
+   - Define primary and dark mode color variables for easy theme switch
+   - Reset margin, padding, and box-sizing for consistency
 ========================================================= */
 
-/* ===== Color Variables for Light and Dark Modes ===== */
 :root {
-  --bg-color: #9bb9c7;
-  --text-color: #357ab8;
-  --box-bg: #ffffff;
-  --box-shadow: rgba(53, 122, 184, 0.2);
-  --navbar-bg: #9bb9c7;
-  --link-color: #357ab8;
+  /* Page & Sections */
+  --bg-color: #9fbfcc;              /* Soft blue page background */
+  --hero-bg: #f6ecd9;               /* Beige intro / hero box */
+  --box-bg: #ffffff;                /* White cards */
+
+  /* Text */
+  --text-color: #2f5f9e;            /* Deeper blue for readability */
+  --text-color-darkmode-box: #2b2b2b;
+
+  /* UI Elements */
+  --navbar-bg: #8fb2c3;
+  --link-color: #2f5f9e;
+
+  /* Effects */
+  --box-shadow: rgba(47, 95, 158, 0.18);
+
+  /* Footer */
+  --footer-bg-light: #6f8fa3;
+  --footer-text-light: #ffffff;
 }
+
 
 .dark-mode {
-  --bg-color: #1f2a44;
-  --text-color: #f0f4f8;
-  --box-bg: #2e3a5e;
-  --box-shadow: rgba(155, 185, 199, 0.35);
-  --navbar-bg: #284a7a;
-  --link-color: #9bb9c7;
+  /* Page & Sections */
+  --bg-color: #1b2438;              /* Deep navy background */
+  --hero-bg: #2a334d;               /* Visible dark beige/blue box */
+  --box-bg: #3a4466;                /* Cards darker than hero */
+
+  /* Text */
+  --text-color: #e6ecf3;
+  --text-color-darkmode-box: #e6ecf3;
+
+  /* UI Elements */
+  --navbar-bg: #233058;
+  --link-color: #b8cbe0;
+
+  /* Effects */
+  --box-shadow: rgba(0, 0, 0, 0.45);
+
+  /* Footer */
+  --footer-bg-light: #141c30;
+  --footer-text-light: #e6ecf3;
 }
 
-/* ===== Reset ===== */
+
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 html, body {
   height: 100%;
-  margin: 0;
-  padding: 0;
 }
 
-/* ===== Body ===== */
 body {
-  font-family: Arial, sans-serif; /* same as your other pages */
+  font-family: "Segoe UI", Arial, sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
-  transition: background-color 0.2s, color 0.2s;
-
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  transition: background-color 0.2s, color 0.2s;
 }
 
-/* ===== Navbar ===== */
-.navbar {
+/* =========================================================
+   NAVBAR (Fixed height and layout)
+========================================================= */
+
+/* Navbar and toggle adjusted to match the example style */
+
+/* Adjust navbar padding and width to match example */
+header.navbar {
+  height: 64px;
+  padding: 10px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   background-color: var(--navbar-bg);
-  padding: 10px 20px;
-
   position: fixed;
   top: 0;
-  left: 0;
+  left: 0; 
   right: 0;
   width: 100%;
-
   z-index: 1000;
   box-shadow: 0 2px 5px var(--box-shadow);
+  box-sizing: border-box; /* to prevent horizontal overflow */
 }
 
+/* Navbar left side flex and alignment */
 .navbar-left {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.logo {
-  width: 40px;
-  height: 40px;
-}
-
+/* Navbar title */
 .navbar-title {
-  font-weight: bold;
-  margin-right: 10px;
+  font-weight: 600;
+  margin-right: 20px;
+  color: white;
+  font-size: 18px;
 }
 
+/* Toggle button style similar to example */
 #theme-toggle {
   padding: 5px 10px;
   background-color: var(--link-color);
@@ -87,12 +117,35 @@ body {
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  margin-left: 10px;
+  font-size: 14px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect */
+#theme-toggle:hover {
+  background-color: var(--text-color);
+}
+
+/* Dark mode toggle color adjustments */
+.dark-mode #theme-toggle {
+  background-color: var(--link-color);
+  color: var(--bg-color);
+}
+
+/* Navbar right side links */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .navbar-right a {
   margin: 0 10px;
   text-decoration: none;
   color: var(--link-color);
+  font-size: 15px;
+  font-weight: 500;
   transition: color 0.3s;
 }
 
@@ -100,23 +153,300 @@ body {
   color: var(--text-color);
 }
 
-/* ===== Shared box/button styles  ===== */
+/* Logo image size adjustment */
+header.navbar img.logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+
+/* =========================================================
+   Main Layout
+========================================================= */
+
+main {
+  margin-top: 90px;
+}
+
+/* =========================================================
+   Hero Section
+========================================================= */
+
+.hero {
+  width: 95%;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  padding: 60px;
+  background: var(--hero-bg);
+  border-radius: 25px;
+}
+
+.hero img {
+  width: 100%;
+  max-height: 1300px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 6px 15px var(--box-shadow);
+}
+
+.hero-text h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+.hero-text p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Spacing between motivational glimpse and clock */
+.hero-text .feature-box {
+  margin-bottom: 24px;
+}
+
+/* =========================================================
+   Buttons & Boxes
+========================================================= */
+
+.btn,
+.button {
+  display: inline-block;
+  background: var(--link-color);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.btn:hover,
+.button:hover {
+  background-color: var(--text-color);
+}
+
 .box {
   background-color: var(--box-bg);
   border-radius: 12px;
   box-shadow: 0 4px 10px var(--box-shadow);
   padding: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  color: var(--text-color-darkmode-box); /* Text color for boxes */
 }
 
-.button {
-  display: inline-block;
-  padding: 10px 15px;
+/* Dark mode box adjustments for feature sections */
+.dark-mode .feature-box {
+  background-color: var(--box-bg);
+  color: var(--text-color);
+  box-shadow: 0 4px 10px var(--box-shadow);
+}
+
+/* Title color in feature boxes for dark mode */
+.dark-mode .feature-box h2 {
+  color: var(--text-color);
+}
+
+/* Text and quote color in feature boxes for dark mode */
+.dark-mode .feature-box p,
+.dark-mode .feature-box blockquote {
+  color: var(--text-color);
+}
+
+/* Button inside feature-box dark mode style */
+.dark-mode .feature-box a.button {
   background-color: var(--link-color);
-  color: white;
+  color: var(--bg-color);
+  margin-top: 16px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+  display: inline-block;
   text-decoration: none;
-  border-radius: 8px;
-  margin-top: 10px;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect on buttons in dark mode */
+.dark-mode .feature-box a.button:hover {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+}
+
+/* Real-time clock styling for visibility and larger font */
+#clock {
+  font-weight: 700;
+  font-size: 28px;       /* Increased font size for better visibility */
+  padding-top: 8px;
+  color: var(--text-color);
+}
+
+/* =========================================================
+   Cards Section
+   - Fix text color for light and dark mode for readability
+========================================================= */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  padding: 60px;
+  background: rgba(53, 122, 184, 0.2);
+  color: var(--text-color-darkmode-box); /* Text color for cards in light mode */
+}
+
+.card {
+  background: #fff7ec;
+  padding: 30px;
+  border-radius: 25px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: var(--text-color-darkmode-box);
+}
+
+/* Dark mode card background and text */
+.dark-mode .card {
+  background-color: var(--box-bg);
+  color: var(--text-color);
+}
+
+/* Card hover effect remains */
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.card h3 {
+  margin-bottom: 15px;
+}
+
+.card p {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   Call To Action Section
+========================================================= */
+
+.cta {
+  margin: 60px auto;
+  max-width: 700px;
+  border: 2px dashed var(--text-color);
+  padding: 30px;
+  text-align: center;
+  border-radius: 20px;
+  background: #fff7ec;
+  color: var(--text-color-darkmode-box);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode CTA adjustments */
+.dark-mode .cta {
+  background-color: var(--box-bg);
+  color: var(--text-color);
+  border-color: var(--text-color);
+}
+
+/* =========================================================
+   Authors Section
+========================================================= */
+
+.authors-section {
+  background: var(--box-bg);
+  padding: 60px 30px;
+  text-align: center;
+  color: var(--text-color-darkmode-box);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode .authors-section {
+  color: var(--text-color);
+}
+
+.authors-section h2 {
+  font-size: 36px;
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+.authors-subtext {
+  color: var(--text-color);
+  max-width: 700px;
+  margin: 0 auto 40px;
+  font-size: 16px;
+}
+
+.authors-container {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.author-card {
+  background: var(--navbar-bg);  /* dark background for author cards */
+  border-radius: 25px;
+  padding: 30px;
+  max-width: 320px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  color: var(--box-bg);          /* light text for readability */
+}
+
+.dark-mode .author-card {
+  background: var(--navbar-bg);
+  color: var(--box-bg);
+}
+
+.author-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.author-card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 2px solid var(--link-color);
+}
+
+.author-card h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: var(--box-bg);
+}
+
+.author-card p {
+  font-size: 14px;
+  color: var(--box-bg);
+  line-height: 1.6;
+}
+
+/* =========================================================
+   Buttons
+========================================================= */
+
+.button {
+  background-color: var(--link-color);
+  color: var(--navbar-bg);
+  border-radius: 25px;
+  padding: 10px 24px;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  margin-top: 20px;
 }
 
 .button:hover {
@@ -124,150 +454,34 @@ body {
   color: var(--bg-color);
 }
 
-/* ===== Intro layout (image left, content right) ===== */
-main {
-  margin-top: 80px; /* space for fixed navbar */
-}
+/* =========================================================
+   Footer
+   - Footer text and background color change for light/dark modes
+========================================================= */
 
-.intro {
-  width: 95%;
-  max-width: 10000px;
-  margin: 20px auto;
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 30px;
-  align-items: start;
-}
-
-.intro-media {
-  margin: 0;
-}
-
-.intro-media img {
-  width: 100%;
-  max-height: 1300px;       /* keeps picture from being too big */
-  object-fit: cover;
-  border-radius: 18px;
-  box-shadow: 0 6px 15px var(--box-shadow);
-  display: block;
-}
-
-.intro-media figcaption {
-  margin-top: 10px;
-  font-size: 0.95rem;
-}
-
-.intro-text h1 {
-  font-size: 42px;
-  margin: 0 0 16px 0;
-}
-
-.intro-text p {
-  font-size: 18px;
-  line-height: 1.6;
-  margin: 0 0 16px 0;
-}
-
-/* Feature boxes inside intro */
-.feature-box {
-  margin-top: 18px;
-}
-
-#motivational-quote {
-  font-style: italic;
-  margin: 10px 0 0 0;
-  white-space: normal;
-}
-
-#clock {
-  font-size: 2rem;
-  font-weight: bold;
-  text-align: center;
-  margin-top: 10px;
-}
-
-/* ===== Authors section ===== */
-.authors {
-  width: 90%;
-  max-width: 1200px;
-  margin: 20px auto;
-  text-align: center;
-}
-
-.authors h2 {
-  margin: 40px 0 10px;
-  font-size: 36px;
-}
-
-.authors-subtext {
-  max-width: 800px;
-  margin: 0 auto 25px;
-  line-height: 1.6;
-}
-
-.authors-container {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.author-card {
-  width: 320px;
-}
-
-.author-card img {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-bottom: 10px;
-}
-
-.authors-actions {
-  margin-top: 20px;
-}
-
-/* ===== Bottom quick links ===== */
-.quick-links {
-  width: 90%;
-  max-width: 1200px;
-  margin: 20px auto 40px;
-
-  display: grid;
-  grid-template-columns: repeat(2, minmax(240px, 1fr));
-  gap: 20px;
-
-  background: rgba(53, 122, 184, 0.2);
-  border-radius: 18px;
-  padding: 25px;
-}
-
-.quick-card h3 {
-  margin-top: 0;
-  margin-bottom: 10px;
-}
-
-/* ===== Footer ===== */
 footer {
   margin-top: auto;
-  width: 100%;
+  background: var(--footer-bg-light);
+  color: var(--footer-text-light);
   text-align: center;
-  padding: 0 20px 20px;
+  padding: 20px;
+  border-radius: 12px 12px 0 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-footer .box {
-  margin-bottom: 0;
+.dark-mode footer {
+  background: var(--footer-bg-light);
+  color: var(--footer-text-light);
 }
 
-/* ===== Responsive ===== */
+/* =========================================================
+   Responsive
+========================================================= */
+
 @media (max-width: 900px) {
-  .intro {
+  .hero {
     grid-template-columns: 1fr;
-  }
-
-  .quick-links {
-    grid-template-columns: 1fr;
+    padding: 40px 25px;
   }
 
   main {
