@@ -32,7 +32,6 @@ function loadTasks() {
     
     // If tasks exist in localStorage
     if(storedTasks) {
-        // Parse the JSON string back into an array
         tasks = JSON.parse(storedTasks);
         // Display the tasks on the page
         renderTasks();
