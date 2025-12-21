@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/png" href="../assets/StudyMate.png">
+  <!-- ===== META TAGS ===== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="StudyMate: Your Personal Study Companion Tool for productivity, planning, and motivation.">
   <meta name="author" content="Zirjan Hero F. Mendaro & Sasha Victoria Meneses">
+ <!-- ===== FAVICON ===== -->
+  <link rel="icon" type="image/png" href="../assets/StudyMate.png"> 
+ <!-- ===== TITLE ===== -->
   <title>StudyMate | Subjects</title>
-
+<!-- ===== SUBJECT CSS ===== -->
   <link rel="stylesheet" href="styleSubjects.css">
 </head>
 <body>
 
 <!-- NAVBAR -->
 <div class="navbar">
+  <!-- Left side: logo, title, dark mode button -->
   <div class="navbar-left">
     <img src="../assets/StudyMate.png" alt="Logo" class="logo">
     <span class="navbar-title">Studymate</span>
     <button id="theme-toggle" type="button">Toggle Dark Mode</button>
   </div>
 
-
+  <!-- Right side: Page links -->
   <div class="navbar-right">
     <a href="1-ProjectHome.html">Home</a>
     <a href="2-ProjectStudyPlanner.html">Study Planner</a>
@@ -30,8 +34,8 @@
   </div>
 </div>
 
+<!-- ===== MAIN ===== -->
 <div class="container">
-
   <div class="main">
     <h1 id="subjectTitle">Math</h1>
 
@@ -67,16 +71,16 @@
     <div class="subject-item" onclick="loadSubject('Filipino', event)">Filipino</div>
     <div class="subject-item" onclick="loadSubject('English', event)">English</div>
   </div>
-
 </div>
 
+<!-- ===== FOOTER ===== -->
 <footer class="footer">
   <p>© 2025 StudyMate | All Rights Reserved</p>
   <p>
     <a href="6-ProjectReferences.html" class="button" style="display: inline-block; margin-top: 0.5rem;">📚 View References</a>
   </p>
 </footer>
-
+<!-- ===== SUBJECT JS ===== -->
 <script src="D-Subjects.js"></script>
 </body>
 </html>
