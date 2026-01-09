@@ -101,4 +101,21 @@
 ### - Buttons: Update Goals, Back to Profile, Study Planner
 ### - Footer at bottom
 
+## 14. Definition of Done
+### The Q3 project will be considered complete when:
+### - All 3 new pages are created (Sign Up Form, My Profile, My Goals)
+### - HTML form with at least 8 different input types is working
+### - Form data is successfully saved to localStorage
+### - Saved data is displayed correctly on My Profile and My Goals pages
+### - Wireframes for all 3 new pages are completed and fixed design for all web pages on Canva.
+### - References page is finished with all sources cited
+### - Dark mode and light mode toggle is fully functional on all pages
+### - Motivation page is complete with random quote functionality
+### - About page is complete with creator information and toggle features
+### - Website works on both phone and laptop (responsive)
+### - All navigation links work properly
+### - Code is clean and well-commented
+### - README.md proposal is complete and submitted
+### - GitHub repository is updated with all changes
+
 
