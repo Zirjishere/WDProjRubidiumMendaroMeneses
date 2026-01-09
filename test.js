@@ -6,7 +6,7 @@ let input = data.toString().trim();
  let pFound = showProducts(obj, input); // complete this function wherein it should console out all product objects in (obj) under the Manufacturer's Name in (input)
  // test pFound and give appropriate message
  if (!pFound) {
-     console.log(`Manufacturer ${input} Not Found in in product list`);
+     console.log(`Manufacturer ${input} Not Found in product list`);
  }
 
  process.exit()
