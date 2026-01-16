@@ -1,7 +1,13 @@
+/* =========================================================
+   styleReferences.css - References Page Styling
+   Matches the color scheme from styleHome.css
+========================================================= */
+
 /* ===== Color Variables for Light and Dark Modes ===== */
 :root {
   /* Page & Sections */
   --bg-color: #9fbfcc;              /* Soft blue page background */
+  --hero-bg: #f6ecd9;               /* Beige intro / hero box */
   --box-bg: #ffffff;                /* White cards */
 
   /* Text */
@@ -23,7 +29,8 @@
 .dark-mode {
   /* Page & Sections */
   --bg-color: #1b2438;              /* Deep navy background */
-  --box-bg: #3a4466;                /* Cards darker */
+  --hero-bg: #2a334d;               /* Visible dark beige/blue box */
+  --box-bg: #3a4466;                /* Cards darker than hero */
 
   /* Text */
   --text-color: #e6ecf3;
@@ -72,7 +79,7 @@ header.navbar {
   background-color: var(--navbar-bg);
   position: fixed;
   top: 0;
-  left: 0;
+  left: 0; 
   right: 0;
   width: 100%;
   z-index: 1000;
@@ -84,11 +91,6 @@ header.navbar {
   display: flex;
   align-items: center;
   gap: 12px;
-}
-
-.logo {
-  width: 40px;
-  height: 40px;
 }
 
 .navbar-title {
@@ -114,34 +116,97 @@ header.navbar {
   background-color: var(--text-color);
 }
 
+.dark-mode #theme-toggle {
+  background-color: var(--link-color);
+  color: var(--bg-color);
+}
+
 .navbar-right {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: flex-start;
 }
 
 .navbar-right a {
+  margin: 0 10px;
   text-decoration: none;
   color: var(--link-color);
   font-size: 15px;
   font-weight: 500;
   transition: color 0.3s;
-  margin: 0 5px;
 }
 
 .navbar-right a:hover {
   color: var(--text-color);
 }
 
+header.navbar img.logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
 /* ===== MAIN CONTENT ===== */
-.content {
+main {
   margin-top: 90px;
-  padding: 40px 20px;
   flex: 1;
-  max-width: 1200px;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+}
+
+.references-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
+.references-container h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+.references-container > p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: var(--text-color);
+}
+
+/* ===== REFERENCE SECTIONS ===== */
+.reference-section {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--box-bg);
+  border-radius: 12px;
+  border-left: 4px solid var(--link-color);
+  box-shadow: 0 4px 10px var(--box-shadow);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.reference-section h2 {
+  color: var(--link-color);
+  margin-bottom: 1rem;
+  font-size: 24px;
+}
+
+.reference-item {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  text-indent: -1.5rem;
+  line-height: 1.6;
+  color: var(--text-color-darkmode-box);
+}
+
+.dark-mode .reference-section {
+  background: var(--box-bg);
+  border-left-color: var(--link-color);
+}
+
+.dark-mode .reference-section h2 {
+  color: var(--link-color);
+}
+
+.dark-mode .reference-item {
+  color: var(--text-color);
 }
 
 /* ===== BOX STYLING ===== */
@@ -149,174 +214,14 @@ header.navbar {
   background-color: var(--box-bg);
   border-radius: 12px;
   box-shadow: 0 4px 10px var(--box-shadow);
-  padding: 30px;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  padding: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
   color: var(--text-color-darkmode-box);
 }
 
 .dark-mode .box {
+  background-color: var(--box-bg);
   color: var(--text-color);
-}
-
-/* ===== MOTIVATION HEADER ===== */
-.motivation-header {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.motivation-header h1 {
-  font-size: 42px;
-  margin-bottom: 15px;
-  color: var(--text-color);
-}
-
-.motivation-header p {
-  font-size: 18px;
-  line-height: 1.6;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-/* ===== QUOTE CONTAINER ===== */
-.quote-container {
-  text-align: center;
-  margin-bottom: 50px;
-  padding: 50px 40px;
-  position: relative;
-  overflow: hidden;
-}
-
-.quote-container::before {
-  content: '"';
-  position: absolute;
-  top: -20px;
-  left: 20px;
-  font-size: 150px;
-  color: var(--link-color);
-  opacity: 0.1;
-  font-family: Georgia, serif;
-}
-
-.quote-icon {
-  font-size: 60px;
-  margin-bottom: 20px;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-}
-
-.quote-text {
-  font-size: 28px;
-  font-style: italic;
-  line-height: 1.6;
-  margin-bottom: 20px;
-  color: var(--text-color);
-  font-weight: 500;
-  min-height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.quote-author {
-  font-size: 18px;
-  color: var(--link-color);
-  font-weight: 600;
-  margin-bottom: 30px;
-}
-
-/* ===== TIPS SECTION ===== */
-.tips-section {
-  margin-bottom: 40px;
-}
-
-.tips-section h2 {
-  text-align: center;
-  font-size: 36px;
-  margin-bottom: 40px;
-  color: var(--text-color);
-}
-
-.tips-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
-}
-
-.tip-card {
-  text-align: center;
-  padding: 30px 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.tip-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 20px var(--box-shadow);
-}
-
-.tip-icon {
-  font-size: 50px;
-  margin-bottom: 15px;
-}
-
-.tip-card h3 {
-  font-size: 22px;
-  margin-bottom: 12px;
-  color: var(--text-color);
-}
-
-.tip-card p {
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--text-color-darkmode-box);
-}
-
-.dark-mode .tip-card p {
-  color: var(--text-color);
-}
-
-/* ===== BUTTON STYLING ===== */
-.button {
-  display: inline-block;
-  background: var(--link-color);
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 25px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 600;
-  text-decoration: none;
-  text-align: center;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  min-width: 120px;
-}
-
-.button:hover {
-  background-color: var(--text-color);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.button:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.dark-mode .button {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-}
-
-.dark-mode .button:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
 /* ===== FOOTER ===== */
@@ -382,6 +287,43 @@ footer .button:active {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
+/* ===== BUTTON STYLING ===== */
+.button {
+  display: inline-block;
+  background: var(--link-color);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-width: 120px;
+}
+
+.button:hover {
+  background-color: var(--text-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .button {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .button:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
   .navbar {
@@ -411,35 +353,34 @@ footer .button:active {
     padding: 6px 12px;
   }
 
-  .content {
-    margin-top: 120px;
-    padding: 30px 15px;
+  .references-container {
+    padding: 1.5rem 1rem;
   }
 
-  .motivation-header h1 {
+  .references-container h1 {
     font-size: 32px;
   }
 
-  .motivation-header p {
+  .references-container > p {
     font-size: 16px;
   }
 
-  .quote-text {
-    font-size: 22px;
-    min-height: 80px;
+  .reference-section {
+    padding: 1.2rem;
   }
 
-  .quote-author {
-    font-size: 16px;
+  .reference-section h2 {
+    font-size: 20px;
   }
 
-  .tips-section h2 {
-    font-size: 28px;
+  .reference-item {
+    font-size: 14px;
+    padding-left: 1rem;
+    text-indent: -1rem;
   }
 
-  .tips-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+  main {
+    margin-top: 120px;
   }
 
   .button {
@@ -453,49 +394,47 @@ footer .button:active {
     font-size: 16px;
   }
 
-  .logo {
-    width: 32px;
-    height: 32px;
+  header.navbar img.logo {
+    width: 24px;
+    height: 24px;
   }
 
-  .motivation-header h1 {
+  .references-container {
+    padding: 1rem 0.75rem;
+  }
+
+  .references-container h1 {
     font-size: 28px;
   }
 
-  .motivation-header p {
+  .references-container > p {
     font-size: 15px;
   }
 
-  .quote-container {
-    padding: 40px 20px;
+  .reference-section {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
   }
 
-  .quote-icon {
-    font-size: 50px;
+  .reference-section h2 {
+    font-size: 18px;
   }
 
-  .quote-text {
-    font-size: 20px;
-    min-height: 70px;
+  .reference-item {
+    font-size: 13px;
+    line-height: 1.5;
   }
 
-  .quote-author {
-    font-size: 15px;
-  }
-
-  .tip-icon {
-    font-size: 40px;
-  }
-
-  .tip-card h3 {
-    font-size: 20px;
-  }
-
-  .tip-card p {
+  .button {
+    padding: 10px 16px;
     font-size: 14px;
   }
 
   footer {
     padding: 15px 10px;
+  }
+
+  main {
+    margin-top: 100px;
   }
 }

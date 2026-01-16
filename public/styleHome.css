@@ -105,7 +105,7 @@ header.navbar {
 .navbar-title {
   font-weight: 600;
   margin-right: 20px;
-  color: white;
+  color: var(--text-color);
   font-size: 18px;
 }
 
@@ -222,13 +222,36 @@ main {
   border-radius: 25px;
   cursor: pointer;
   font-size: 16px;
+  font-weight: 600;
   text-decoration: none;
-  transition: background-color 0.3s;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-width: 120px;
 }
 
 .btn:hover,
 .button:hover {
   background-color: var(--text-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active,
+.button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode button styling */
+.dark-mode .btn,
+.dark-mode .button {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .btn:hover,
+.dark-mode .button:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
 .box {
@@ -365,7 +388,8 @@ main {
 }
 
 .dark-mode .authors-section {
-  color: var(--text-color);
+  background: var(--box-bg);
+  color: var(--text-color-darkmode-box);
 }
 
 .authors-section h2 {
@@ -374,11 +398,19 @@ main {
   margin-bottom: 10px;
 }
 
+.dark-mode .authors-section h2 {
+  color: var(--text-color);
+}
+
 .authors-subtext {
   color: var(--text-color);
   max-width: 700px;
   margin: 0 auto 40px;
   font-size: 16px;
+}
+
+.dark-mode .authors-subtext {
+  color: var(--text-color);
 }
 
 .authors-container {
@@ -420,13 +452,18 @@ main {
 .author-card h3 {
   font-size: 22px;
   margin-bottom: 10px;
-  color: var(--box-bg);
+  color: #000000;
 }
 
 .author-card p {
   font-size: 14px;
-  color: var(--box-bg);
+  color: #000000;
   line-height: 1.6;
+}
+
+.dark-mode .author-card h3,
+.dark-mode .author-card p {
+  color: #ffffff;
 }
 
 /* =========================================================
@@ -464,7 +501,7 @@ footer {
   background: var(--footer-bg-light);
   color: var(--footer-text-light);
   text-align: center;
-  padding: 20px;
+  padding: 30px 20px;
   border-radius: 12px 12px 0 0;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -472,6 +509,54 @@ footer {
 .dark-mode footer {
   background: var(--footer-bg-light);
   color: var(--footer-text-light);
+}
+
+footer p {
+  margin: 8px 0;
+  font-size: 15px;
+}
+
+footer p:first-child {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+footer .button {
+  margin-top: 15px;
+  display: inline-block;
+  background: var(--link-color);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-width: 120px;
+}
+
+footer .button:hover {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+footer .button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode footer .button {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode footer .button:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
 /* =========================================================
@@ -482,9 +567,118 @@ footer {
   .hero {
     grid-template-columns: 1fr;
     padding: 40px 25px;
+    gap: 30px;
+  }
+
+  .hero-text h1 {
+    font-size: 32px;
+  }
+
+  .hero-text p {
+    font-size: 16px;
   }
 
   main {
     margin-top: 120px;
+  }
+
+  .navbar {
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+    gap: 10px;
+  }
+
+  .navbar-left {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .navbar-right {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .navbar-right a {
+    font-size: 14px;
+    margin: 0 5px;
+  }
+
+  #theme-toggle {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .cards {
+    padding: 30px 20px;
+    gap: 20px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .authors-section {
+    padding: 40px 20px;
+  }
+
+  .authors-container {
+    gap: 20px;
+  }
+
+  .author-card {
+    max-width: 100%;
+  }
+
+  .btn,
+  .button {
+    padding: 10px 20px;
+    font-size: 14px;
+    min-width: 100px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 30px 15px;
+  }
+
+  .hero-text h1 {
+    font-size: 28px;
+  }
+
+  .hero-text p {
+    font-size: 15px;
+  }
+
+  .navbar-title {
+    font-size: 16px;
+  }
+
+  header.navbar img.logo {
+    width: 24px;
+    height: 24px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+    padding: 20px 15px;
+  }
+
+  .authors-section h2 {
+    font-size: 28px;
+  }
+
+  .btn,
+  .button {
+    width: 100%;
+    padding: 12px 16px;
+  }
+
+  footer {
+    padding: 15px;
   }
 }

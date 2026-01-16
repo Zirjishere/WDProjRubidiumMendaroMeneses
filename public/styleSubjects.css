@@ -1,20 +1,44 @@
 /* ===== Color Variables for Light and Dark Modes ===== */
 :root {
-  --bg-color: #f3e7d3;
-  --text-color: #357ab8;
-  --box-bg: #ffffff;
-  --box-shadow: rgba(53, 122, 184, 0.2);
-  --navbar-bg: #9bb9c7;
-  --link-color: #357ab8;
+  /* Page & Sections */
+  --bg-color: #9fbfcc;              /* Soft blue page background */
+  --box-bg: #ffffff;                /* White cards */
+
+  /* Text */
+  --text-color: #2f5f9e;            /* Deeper blue for readability */
+  --text-color-darkmode-box: #2b2b2b;
+
+  /* UI Elements */
+  --navbar-bg: #8fb2c3;
+  --link-color: #2f5f9e;
+
+  /* Effects */
+  --box-shadow: rgba(47, 95, 158, 0.18);
+
+  /* Footer */
+  --footer-bg-light: #6f8fa3;
+  --footer-text-light: #ffffff;
 }
 
 .dark-mode {
-  --bg-color: #1f2a44;
-  --text-color: #f0f4f8;
-  --box-bg: #2e3a5e;
-  --box-shadow: rgba(155, 185, 199, 0.35);
-  --navbar-bg: #284a7a;
-  --link-color: #9bb9c7;
+  /* Page & Sections */
+  --bg-color: #1b2438;              /* Deep navy background */
+  --box-bg: #3a4466;                /* Cards darker */
+
+  /* Text */
+  --text-color: #e6ecf3;
+  --text-color-darkmode-box: #e6ecf3;
+
+  /* UI Elements */
+  --navbar-bg: #233058;
+  --link-color: #b8cbe0;
+
+  /* Effects */
+  --box-shadow: rgba(0, 0, 0, 0.45);
+
+  /* Footer */
+  --footer-bg-light: #141c30;
+  --footer-text-light: #e6ecf3;
 }
 
 /* ===== Base ===== */
@@ -69,6 +93,7 @@ body {
 
 .navbar-title {
   font-weight: bold;
+  color: var(--text-color);
 }
 
 #theme-toggle {
@@ -176,18 +201,38 @@ textarea {
 .button {
   display: inline-block;
   margin-top: 10px;
-  padding: 10px 15px;
+  padding: 10px 20px;
   background-color: var(--link-color);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 25px;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
+  font-weight: 600;
+  font-size: 15px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-width: 120px;
 }
 
 .button:hover {
   background-color: var(--text-color);
-  color: var(--bg-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .button {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .button:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
 /* ===== Sidebar ===== */
@@ -223,10 +268,63 @@ textarea {
   margin-top: auto;      /* keeps footer at bottom if page is short */
   width: 100%;
   text-align: center;
-  padding: 20px;
-  background-color: var(--navbar-bg);  
-  color: white;                         
-  box-shadow: 0 -2px 5px var(--box-shadow);
+  padding: 30px 20px;
+  background: var(--footer-bg-light);
+  color: var(--footer-text-light);
+  border-radius: 12px 12px 0 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode .footer {
+  background: var(--footer-bg-light);
+  color: var(--footer-text-light);
+}
+
+.footer p {
+  margin: 8px 0;
+  font-size: 15px;
+}
+
+.footer p:first-child {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.footer .button {
+  margin-top: 15px;
+  display: inline-block;
+  background: var(--link-color);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-width: 120px;
+}
+
+.footer .button:hover {
+  background-color: var(--text-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.footer .button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .footer .button {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .footer .button:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
 
@@ -235,15 +333,117 @@ textarea {
   .container {
     grid-template-columns: 1fr;
     margin-top: 120px;
+    width: 95%;
+    padding: 20px;
   }
 
   .navbar {
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .navbar-left {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
   }
 
   .navbar-right {
+    width: 100%;
     flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .navbar-right a {
+    font-size: 14px;
+    margin: 0 5px;
+  }
+
+  #theme-toggle {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .main h1 {
+    font-size: 32px;
+  }
+
+  .sidebar {
+    margin-top: 20px;
+  }
+
+  .sidebar h3 {
+    font-size: 24px;
+  }
+
+  .subject-item {
+    padding: 15px;
+    font-size: 16px;
+  }
+
+  textarea {
+    font-size: 15px;
+  }
+
+  .button {
+    width: 100%;
+    padding: 12px 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 98%;
+    padding: 15px;
+    margin-top: 100px;
+  }
+
+  .navbar-title {
+    font-size: 16px;
+  }
+
+  .logo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .main h1 {
+    font-size: 28px;
+  }
+
+  .notes strong,
+  .summary strong,
+  .quiz strong {
+    font-size: 16px;
+  }
+
+  .notes-box,
+  .summary-box {
+    padding: 10px;
+  }
+
+  textarea {
+    height: 100px;
+    font-size: 14px;
+  }
+
+  .subject-item {
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .sidebar h3 {
+    font-size: 22px;
+  }
+
+  .button {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  .footer {
+    padding: 15px 10px;
   }
 }
