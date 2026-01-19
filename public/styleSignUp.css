@@ -263,11 +263,9 @@ main {
   border-radius: 5px;
   background: var(--input-border);
   outline: none;
-  -webkit-appearance: none;
 }
 
 .form-group input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
   appearance: none;
   width: 20px;
   height: 20px;
