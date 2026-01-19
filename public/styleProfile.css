@@ -1,0 +1,567 @@
+/* =========================================================
+   Global Reset & Variables
+========================================================= */
+
+:root {
+  /* Page & Sections */
+  --bg-color: #9fbfcc;
+  --hero-bg: #f6ecd9;
+  --box-bg: #ffffff;
+
+  /* Text */
+  --text-color: #2f5f9e;
+  --text-color-darkmode-box: #2b2b2b;
+
+  /* UI Elements */
+  --navbar-bg: #8fb2c3;
+  --link-color: #2f5f9e;
+
+  /* Effects */
+  --box-shadow: rgba(47, 95, 158, 0.18);
+
+  /* Footer */
+  --footer-bg-light: #6f8fa3;
+  --footer-text-light: #ffffff;
+}
+
+.dark-mode {
+  /* Page & Sections */
+  --bg-color: #1b2438;
+  --hero-bg: #2a334d;
+  --box-bg: #3a4466;
+
+  /* Text */
+  --text-color: #e6ecf3;
+  --text-color-darkmode-box: #e6ecf3;
+
+  /* UI Elements */
+  --navbar-bg: #233058;
+  --link-color: #b8cbe0;
+
+  /* Effects */
+  --box-shadow: rgba(0, 0, 0, 0.45);
+
+  /* Footer */
+  --footer-bg-light: #141c30;
+  --footer-text-light: #e6ecf3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+header.navbar {
+  height: 64px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--navbar-bg);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 5px var(--box-shadow);
+  box-sizing: border-box;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar-title {
+  font-weight: 600;
+  margin-right: 20px;
+  color: var(--text-color);
+  font-size: 18px;
+}
+
+#theme-toggle {
+  padding: 5px 10px;
+  background-color: var(--link-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 10px;
+  font-size: 14px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#theme-toggle:hover {
+  background-color: var(--text-color);
+}
+
+.dark-mode #theme-toggle {
+  background-color: var(--link-color);
+  color: var(--bg-color);
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.navbar-right a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: var(--link-color);
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.navbar-right a:hover {
+  color: var(--text-color);
+}
+
+header.navbar img.logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+/* =========================================================
+   Main Layout
+========================================================= */
+
+main {
+  margin-top: 90px;
+  flex: 1;
+  padding: 40px 20px;
+  max-width: 1200px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* =========================================================
+   No Profile Section
+========================================================= */
+
+.no-profile-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
+.no-profile-box {
+  text-align: center;
+  padding: 60px 40px;
+  max-width: 500px;
+}
+
+.no-profile-box h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+.no-profile-box p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  color: var(--text-color);
+}
+
+/* =========================================================
+   Profile Section
+========================================================= */
+
+.profile-section {
+  display: grid;
+  gap: 50px;
+}
+
+/* Welcome Header */
+.welcome-header {
+  text-align: center;
+  padding: 40px 30px;
+  background: linear-gradient(135deg, var(--box-bg) 0%, var(--hero-bg) 100%);
+  border-radius: 25px;
+}
+
+.welcome-header h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: var(--text-color);
+}
+
+.dark-mode .welcome-header h1 {
+  color: var(--text-color);
+}
+
+.welcome-header #user-name {
+  color: var(--link-color);
+  font-weight: 700;
+}
+
+.welcome-header p {
+  font-size: 18px;
+  color: var(--text-color);
+}
+
+.dark-mode .welcome-header p {
+  color: var(--text-color);
+}
+
+/* Profile Card */
+.profile-card {
+  padding: 50px;
+  border-radius: 25px;
+}
+
+.profile-card h2 {
+  font-size: 28px;
+  margin-bottom: 25px;
+  color: var(--text-color);
+}
+
+.dark-mode .profile-card h2 {
+  color: var(--text-color);
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.profile-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  background-color: var(--hero-bg);
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark-mode .profile-item {
+  background-color: var(--navbar-bg);
+}
+
+.profile-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px var(--box-shadow);
+}
+
+.profile-label {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+.profile-value {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.dark-mode .profile-value {
+  color: var(--text-color);
+}
+
+/* Subjects Card */
+.subjects-card {
+  padding: 50px;
+  border-radius: 25px;
+}
+
+.subjects-card h2 {
+  font-size: 28px;
+  margin-bottom: 25px;
+  color: var(--text-color);
+}
+
+.dark-mode .subjects-card h2 {
+  color: var(--text-color);
+}
+
+.subjects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.subject-badge {
+  padding: 15px 20px;
+  background: linear-gradient(135deg, var(--link-color) 0%, var(--text-color) 100%);
+  color: white;
+  border-radius: 15px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.subject-badge:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Goals Card */
+.goals-card {
+  padding: 50px;
+  border-radius: 25px;
+}
+
+.goals-card h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+.dark-mode .goals-card h2 {
+  color: var(--text-color);
+}
+
+.goals-content {
+  background-color: var(--hero-bg);
+  padding: 30px;
+  border-radius: 15px;
+  border-left: 5px solid var(--link-color);
+}
+
+.dark-mode .goals-content {
+  background-color: var(--navbar-bg);
+}
+
+.goals-content p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-color);
+  white-space: pre-wrap;
+}
+
+.dark-mode .goals-content p {
+  color: var(--text-color);
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 10px;
+}
+
+/* =========================================================
+   Buttons
+========================================================= */
+
+.button {
+  display: inline-block;
+  background: var(--link-color);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+  background-color: var(--text-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.delete-btn {
+  background: #dc3545;
+}
+
+.delete-btn:hover {
+  background: #c82333;
+}
+
+/* =========================================================
+   Box Styling
+========================================================= */
+
+.box {
+  background-color: var(--box-bg);
+  box-shadow: 0 4px 10px var(--box-shadow);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  color: var(--text-color-darkmode-box);
+}
+
+.dark-mode .box {
+  background-color: var(--box-bg);
+  color: var(--text-color);
+}
+
+/* =========================================================
+   Footer
+========================================================= */
+
+footer {
+  margin-top: auto;
+  background: var(--footer-bg-light);
+  color: var(--footer-text-light);
+  text-align: center;
+  padding: 30px 20px;
+  border-radius: 12px 12px 0 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode footer {
+  background: var(--footer-bg-light);
+  color: var(--footer-text-light);
+}
+
+footer p {
+  margin: 8px 0;
+  font-size: 15px;
+}
+
+footer p:first-child {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+footer .button {
+  margin-top: 15px;
+  display: inline-block;
+}
+
+/* =========================================================
+   Responsive
+========================================================= */
+
+@media (max-width: 900px) {
+  main {
+    margin-top: 120px;
+    padding: 30px 15px;
+  }
+
+  .navbar {
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+    gap: 10px;
+  }
+
+  .navbar-left {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .navbar-right {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .navbar-right a {
+    font-size: 14px;
+    margin: 0 5px;
+  }
+
+  #theme-toggle {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .welcome-header h1 {
+    font-size: 28px;
+  }
+
+  .profile-card,
+  .subjects-card,
+  .goals-card {
+    padding: 30px 20px;
+  }
+
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .subjects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .action-buttons {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .welcome-header {
+    padding: 30px 20px;
+  }
+
+  .welcome-header h1 {
+    font-size: 24px;
+  }
+
+  .welcome-header p {
+    font-size: 16px;
+  }
+
+  .profile-card h2,
+  .subjects-card h2,
+  .goals-card h2 {
+    font-size: 24px;
+  }
+
+  .no-profile-box {
+    padding: 40px 20px;
+  }
+
+  .no-profile-box h1 {
+    font-size: 28px;
+  }
+
+  .navbar-title {
+    font-size: 16px;
+  }
+
+  header.navbar img.logo {
+    width: 24px;
+    height: 24px;
+  }
+
+  footer {
+    padding: 15px;
+  }
+}

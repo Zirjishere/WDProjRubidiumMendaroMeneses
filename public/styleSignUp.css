@@ -1,0 +1,591 @@
+/* =========================================================
+   Global Reset & Variables
+   - Define primary and dark mode color variables for easy theme switch
+   - Reset margin, padding, and box-sizing for consistency
+========================================================= */
+
+:root {
+  /* Page & Sections */
+  --bg-color: #9fbfcc;              /* Soft blue page background */
+  --hero-bg: #f6ecd9;               /* Beige intro / hero box */
+  --box-bg: #ffffff;                /* White cards */
+
+  /* Text */
+  --text-color: #2f5f9e;            /* Deeper blue for readability */
+  --text-color-darkmode-box: #2b2b2b;
+
+  /* UI Elements */
+  --navbar-bg: #8fb2c3;
+  --link-color: #2f5f9e;
+  --input-border: #ccc;
+  --input-focus: #2f5f9e;
+
+  /* Effects */
+  --box-shadow: rgba(47, 95, 158, 0.18);
+
+  /* Footer */
+  --footer-bg-light: #6f8fa3;
+  --footer-text-light: #ffffff;
+}
+
+.dark-mode {
+  /* Page & Sections */
+  --bg-color: #1b2438;              /* Deep navy background */
+  --hero-bg: #2a334d;               /* Visible dark beige/blue box */
+  --box-bg: #3a4466;                /* Cards darker than hero */
+
+  /* Text */
+  --text-color: #e6ecf3;
+  --text-color-darkmode-box: #e6ecf3;
+
+  /* UI Elements */
+  --navbar-bg: #233058;
+  --link-color: #b8cbe0;
+  --input-border: #4a5578;
+  --input-focus: #b8cbe0;
+
+  /* Effects */
+  --box-shadow: rgba(0, 0, 0, 0.45);
+
+  /* Footer */
+  --footer-bg-light: #141c30;
+  --footer-text-light: #e6ecf3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+/* =========================================================
+   NAVBAR (Fixed height and layout)
+========================================================= */
+
+header.navbar {
+  height: 64px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--navbar-bg);
+  position: fixed;
+  top: 0;
+  left: 0; 
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 5px var(--box-shadow);
+  box-sizing: border-box;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar-title {
+  font-weight: 600;
+  margin-right: 20px;
+  color: var(--text-color);
+  font-size: 18px;
+}
+
+#theme-toggle {
+  padding: 5px 10px;
+  background-color: var(--link-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 10px;
+  font-size: 14px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#theme-toggle:hover {
+  background-color: var(--text-color);
+}
+
+.dark-mode #theme-toggle {
+  background-color: var(--link-color);
+  color: var(--bg-color);
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.navbar-right a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: var(--link-color);
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.navbar-right a:hover {
+  color: var(--text-color);
+}
+
+header.navbar img.logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+/* =========================================================
+   Main Layout
+========================================================= */
+
+main {
+  margin-top: 90px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* =========================================================
+   Sign Up Container
+========================================================= */
+
+.signup-container {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.form-wrapper {
+  background-color: var(--box-bg);
+  border-radius: 25px;
+  box-shadow: 0 8px 20px var(--box-shadow);
+  padding: 50px 40px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.form-wrapper h1 {
+  font-size: 36px;
+  color: var(--text-color);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.dark-mode .form-wrapper h1 {
+  color: var(--text-color);
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--text-color);
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+.dark-mode .subtitle {
+  color: var(--text-color);
+}
+
+/* =========================================================
+   Form Styling
+========================================================= */
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-color);
+  font-size: 15px;
+}
+
+.dark-mode .form-group label {
+  color: var(--text-color);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="number"],
+.form-group input[type="date"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid var(--input-border);
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  background-color: var(--box-bg);
+  color: var(--text-color);
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--input-focus);
+  box-shadow: 0 0 0 3px rgba(47, 95, 158, 0.1);
+}
+
+.dark-mode .form-group input:focus,
+.dark-mode .form-group select:focus,
+.dark-mode .form-group textarea:focus {
+  box-shadow: 0 0 0 3px rgba(184, 203, 224, 0.1);
+}
+
+/* Range Slider */
+.form-group input[type="range"] {
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  background: var(--input-border);
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.form-group input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--link-color);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.form-group input[type="range"]::-webkit-slider-thumb:hover {
+  background: var(--input-focus);
+}
+
+.form-group input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--link-color);
+  cursor: pointer;
+  border: none;
+  transition: background 0.3s ease;
+}
+
+.form-group input[type="range"]::-moz-range-thumb:hover {
+  background: var(--input-focus);
+}
+
+#motivationValue {
+  font-weight: 700;
+  color: var(--link-color);
+}
+
+/* Radio Buttons */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.radio-label:hover {
+  background-color: rgba(47, 95, 158, 0.05);
+}
+
+.dark-mode .radio-label:hover {
+  background-color: rgba(184, 203, 224, 0.05);
+}
+
+.radio-label input[type="radio"] {
+  margin-right: 10px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.radio-label span {
+  color: var(--text-color);
+  font-size: 15px;
+}
+
+/* Checkboxes */
+.checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.checkbox-label:hover {
+  background-color: rgba(47, 95, 158, 0.05);
+}
+
+.dark-mode .checkbox-label:hover {
+  background-color: rgba(184, 203, 224, 0.05);
+}
+
+.checkbox-label input[type="checkbox"] {
+  margin-right: 10px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.checkbox-label span {
+  color: var(--text-color);
+  font-size: 15px;
+}
+
+/* Textarea */
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* =========================================================
+   Buttons
+========================================================= */
+
+.btn,
+.button {
+  display: inline-block;
+  background: var(--link-color);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.btn:hover,
+.button:hover {
+  background-color: var(--text-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active,
+.button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.submit-btn {
+  margin-top: 10px;
+}
+
+/* =========================================================
+   Form Footer
+========================================================= */
+
+.form-footer {
+  text-align: center;
+  margin-top: 25px;
+  color: var(--text-color);
+  font-size: 14px;
+}
+
+.form-footer a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.form-footer a:hover {
+  color: var(--input-focus);
+  text-decoration: underline;
+}
+
+/* =========================================================
+   Box Styling
+========================================================= */
+
+.box {
+  background-color: var(--box-bg);
+  color: var(--text-color-darkmode-box);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode .box {
+  background-color: var(--box-bg);
+  color: var(--text-color);
+}
+
+/* =========================================================
+   Footer
+========================================================= */
+
+footer {
+  margin-top: auto;
+  background: var(--footer-bg-light);
+  color: var(--footer-text-light);
+  text-align: center;
+  padding: 30px 20px;
+  border-radius: 12px 12px 0 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode footer {
+  background: var(--footer-bg-light);
+  color: var(--footer-text-light);
+}
+
+footer p {
+  margin: 8px 0;
+  font-size: 15px;
+}
+
+footer p:first-child {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+footer .button {
+  margin-top: 15px;
+  display: inline-block;
+  background: var(--link-color);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-width: 120px;
+  width: auto;
+}
+
+footer .button:hover {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================================================
+   Responsive
+========================================================= */
+
+@media (max-width: 900px) {
+  main {
+    margin-top: 120px;
+    padding: 30px 15px;
+  }
+
+  .navbar {
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+    gap: 10px;
+  }
+
+  .navbar-left {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .navbar-right {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .navbar-right a {
+    font-size: 14px;
+    margin: 0 5px;
+  }
+
+  #theme-toggle {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .form-wrapper {
+    padding: 40px 30px;
+  }
+
+  .form-wrapper h1 {
+    font-size: 28px;
+  }
+
+  .checkbox-group {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-wrapper {
+    padding: 30px 20px;
+  }
+
+  .form-wrapper h1 {
+    font-size: 24px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .navbar-title {
+    font-size: 16px;
+  }
+
+  header.navbar img.logo {
+    width: 24px;
+    height: 24px;
+  }
+
+  footer {
+    padding: 15px;
+  }
+}

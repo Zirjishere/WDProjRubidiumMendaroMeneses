@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ===== META TAGS ===== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="StudyMate Sign Up - Create your personal study profile" />
+  <meta name="author" content="Zirjan Hero F. Mendaro & Sasha Victoria Meneses" />
+  <!-- ===== TITLE ===== -->
+  <title>StudyMate | Sign Up</title>
+  <!-- ===== FAVICON ===== -->
+  <link rel="icon" type="image/png" href="../assets/StudyMate.png">
+  <!-- ===== SIGNUP CSS ===== -->
+  <link rel="stylesheet" href="styleSignUp.css" />
+</head>
+<body>
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <!-- Left side: logo, title, dark mode button -->
+    <div class="navbar-left">
+      <img src="../assets/StudyMate.png" alt="StudyMate Logo" class="logo" />
+      <span class="navbar-title">StudyMate</span>
+      <button id="theme-toggle" type="button">Toggle Dark Mode</button>
+    </div>
+    
+    <!-- Right side: Page links -->
+    <nav class="navbar-right" aria-label="Main Navigation">
+      <a href="1-ProjectHome.html">Home</a>
+      <a href="2-ProjectStudyPlanner.html">Study Planner</a>
+      <a href="3-ProjectMotivation.html">Motivation</a>
+      <a href="4-ProjectSubjects.html">Subjects</a>
+      <a href="5-ProjectAbout.html">About</a>
+      <a href="7-MyProfile.html">My Profile</a>
+      <a href="8-MyGoals.html">My Goals</a>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main>
+    <!-- ===== SIGN UP FORM SECTION ===== -->
+    <section class="signup-container">
+      <div class="form-wrapper box">
+        <h1>Welcome to StudyMate! 📚</h1>
+        <p class="subtitle">Create your personal study profile to get started</p>
+
+        <form id="signup-form">
+          <!-- Name Input (Text) -->
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              placeholder="Enter your full name" 
+              required 
+              minlength="2"
+            />
+          </div>
+
+          <!-- Email Input (Email) -->
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              placeholder="your.email@example.com" 
+              required 
+            />
+          </div>
+
+          <!-- Grade Level (Select Dropdown) -->
+          <div class="form-group">
+            <label for="grade">Grade Level *</label>
+            <select id="grade" name="grade" required>
+              <option value="">Select your grade</option>
+              <option value="7">Grade 7</option>
+              <option value="8">Grade 8</option>
+              <option value="9">Grade 9</option>
+              <option value="10">Grade 10</option>
+              <option value="11">Grade 11</option>
+              <option value="12">Grade 12</option>
+              <option value="college">College</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <!-- Join Date (Date) -->
+          <div class="form-group">
+            <label for="joinDate">Start Date *</label>
+            <input 
+              type="date" 
+              id="joinDate" 
+              name="joinDate" 
+              required 
+            />
+          </div>
+
+          <!-- Study Hours Per Day (Number) -->
+          <div class="form-group">
+            <label for="studyHours">Daily Study Hours Goal *</label>
+            <input 
+              type="number" 
+              id="studyHours" 
+              name="studyHours" 
+              min="1" 
+              max="24" 
+              placeholder="e.g., 3" 
+              required 
+            />
+          </div>
+
+          <!-- Motivation Level (Range Slider) -->
+          <div class="form-group">
+            <label for="motivation">Current Motivation Level: <span id="motivationValue">5</span>/10</label>
+            <input 
+              type="range" 
+              id="motivation" 
+              name="motivation" 
+              min="1" 
+              max="10" 
+              value="5" 
+              step="1"
+            />
+          </div>
+
+          <!-- Study Time Preference (Radio Buttons) -->
+          <div class="form-group">
+            <label>Preferred Study Time *</label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" name="studyTime" value="morning" required />
+                <span>Morning (6 AM - 12 PM)</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="studyTime" value="afternoon" />
+                <span>Afternoon (12 PM - 6 PM)</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="studyTime" value="evening" />
+                <span>Evening (6 PM - 12 AM)</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="studyTime" value="night" />
+                <span>Night (12 AM - 6 AM)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Favorite Subjects (Checkboxes) -->
+          <div class="form-group">
+            <label>Favorite Subjects (Select all that apply) *</label>
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" name="subjects" value="Mathematics" />
+                <span>📐 Mathematics</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="subjects" value="Science" />
+                <span>🔬 Science</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="subjects" value="English" />
+                <span>📖 English</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="subjects" value="History" />
+                <span>🏛️ History</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="subjects" value="Computer Science" />
+                <span>💻 Computer Science</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="subjects" value="Arts" />
+                <span>🎨 Arts</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="subjects" value="Physical Education" />
+                <span>⚽ Physical Education</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="subjects" value="Languages" />
+                <span>🌍 Languages</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Study Goals (Textarea) -->
+          <div class="form-group">
+            <label for="goals">Your Study Goals *</label>
+            <textarea 
+              id="goals" 
+              name="goals" 
+              rows="5" 
+              placeholder="What do you want to achieve? (e.g., Improve grades, prepare for exams, learn new skills...)" 
+              required
+              minlength="10"
+            ></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn submit-btn">Create My Profile 🚀</button>
+        </form>
+
+        <p class="form-footer">
+          Already have a profile? <a href="7-MyProfile.html">View Profile</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>© 2025 StudyMate. All Rights Reserved.</p>
+    <p>Your Personal Study Companion</p>
+    <a href="6-ProjectReferences.html" class="button">📚 View References</a>
+  </footer>
+
+  <!-- ===== SIGNUP JS ===== -->
+  <script src="G-SignUp.js"></script>
+</body>
+</html>

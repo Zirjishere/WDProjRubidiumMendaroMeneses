@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ===== META TAGS ===== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="StudyMate My Goals - Track and manage your study goals" />
+  <meta name="author" content="Zirjan Hero F. Mendaro & Sasha Victoria Meneses" />
+  <!-- ===== TITLE ===== -->
+  <title>StudyMate | My Goals</title>
+  <!-- ===== FAVICON ===== -->
+  <link rel="icon" type="image/png" href="../assets/StudyMate.png">
+  <!-- ===== GOALS CSS ===== -->
+  <link rel="stylesheet" href="styleGoals.css" />
+</head>
+<body>
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <!-- Left side: logo, title, dark mode button -->
+    <div class="navbar-left">
+      <img src="../assets/StudyMate.png" alt="StudyMate Logo" class="logo" />
+      <span class="navbar-title">StudyMate</span>
+      <button id="theme-toggle" type="button">Toggle Dark Mode</button>
+    </div>
+    
+    <!-- Right side: Page links -->
+    <nav class="navbar-right" aria-label="Main Navigation">
+      <a href="1-ProjectHome.html">Home</a>
+      <a href="2-ProjectStudyPlanner.html">Study Planner</a>
+      <a href="3-ProjectMotivation.html">Motivation</a>
+      <a href="4-ProjectSubjects.html">Subjects</a>
+      <a href="5-ProjectAbout.html">About</a>
+      <a href="7-MyProfile.html">My Profile</a>
+      <a href="8-MyGoals.html" aria-current="page">My Goals</a>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main>
+    <!-- ===== NO PROFILE MESSAGE ===== -->
+    <section id="no-profile" class="no-profile-section" style="display: none;">
+      <div class="box no-profile-box">
+        <h1>📋 No Profile Found</h1>
+        <p>You need to create a profile first to set your goals!</p>
+        <a href="0-SignUp.html" class="button">Create Profile Now</a>
+      </div>
+    </section>
+
+    <!-- ===== GOALS SECTION ===== -->
+    <section id="goals-section" class="goals-section" style="display: none;">
+      <!-- Welcome Header -->
+      <div class="welcome-header box">
+        <h1>Hello, <span id="user-name">Student</span>! 🎯</h1>
+        <p id="days-counter">You've been with StudyMate for <strong id="days-active">0</strong> days!</p>
+        <p class="motivational-text" id="motivational-message">Keep pushing forward! 💪</p>
+      </div>
+
+      <!-- Study Goals Card -->
+      <div class="goals-card box">
+        <h2>📝 Your Study Goals</h2>
+        <div class="goals-display">
+          <p id="main-goals">-</p>
+        </div>
+        <button id="edit-goals-btn" class="button">✏️ Edit Goals</button>
+      </div>
+
+      <!-- Goals Checklist -->
+      <div class="checklist-card box">
+        <h2>✅ Daily Goals Tracker</h2>
+        <p class="checklist-subtitle">Track your daily study tasks and achievements</p>
+        
+        <div id="goals-checklist">
+          <!-- Checklist items will be dynamically added here -->
+        </div>
+
+        <div class="add-goal-section">
+          <input 
+            type="text" 
+            id="new-goal-input" 
+            placeholder="Add a new daily goal..." 
+            maxlength="100"
+          />
+          <button id="add-goal-btn" class="button">➕ Add Goal</button>
+        </div>
+      </div>
+
+      <!-- Study Stats -->
+      <div class="stats-grid">
+        <div class="stat-card box">
+          <div class="stat-icon">⏰</div>
+          <div class="stat-content">
+            <h3>Daily Study Goal</h3>
+            <p class="stat-value" id="study-hours-goal">-</p>
+          </div>
+        </div>
+
+        <div class="stat-card box">
+          <div class="stat-icon">🔥</div>
+          <div class="stat-content">
+            <h3>Motivation Level</h3>
+            <p class="stat-value" id="motivation-level">-</p>
+          </div>
+        </div>
+
+        <div class="stat-card box">
+          <div class="stat-icon">📚</div>
+          <div class="stat-content">
+            <h3>Favorite Subjects</h3>
+            <p class="stat-value" id="subjects-count">-</p>
+          </div>
+        </div>
+
+        <div class="stat-card box">
+          <div class="stat-icon">✅</div>
+          <div class="stat-content">
+            <h3>Goals Completed</h3>
+            <p class="stat-value" id="completed-goals">0/0</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Subjects List -->
+      <div class="subjects-card box">
+        <h2>📖 Your Study Subjects</h2>
+        <div id="subjects-list" class="subjects-list">
+          <!-- Subjects will be dynamically added here -->
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <a href="7-MyProfile.html" class="button">👤 Back to Profile</a>
+        <a href="2-ProjectStudyPlanner.html" class="button">📅 Study Planner</a>
+        <a href="3-ProjectMotivation.html" class="button">💡 Get Motivated</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>© 2025 StudyMate. All Rights Reserved.</p>
+    <p>Your Personal Study Companion</p>
+    <a href="6-ProjectReferences.html" class="button">📚 View References</a>
+  </footer>
+
+  <!-- ===== GOALS JS ===== -->
+  <script src="I-Goals.js"></script>
+</body>
+</html>

@@ -2,89 +2,221 @@
 <html lang="en">
 <head>
   <!-- ===== CHARACTER ENCODING ===== -->
-  <!-- Sets the character encoding to UTF-8 for proper text display -->
   <meta charset="UTF-8">
   
   <!-- ===== VIEWPORT SETTINGS ===== -->
-  <!-- Makes the website responsive on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- ===== AUTO-REDIRECT META TAG ===== -->
-  <!-- Automatically redirects to the home page after 0 seconds -->
-  <!-- This is the primary redirect method for GitHub Pages -->
-  <meta http-equiv="refresh" content="0; url=public/1-ProjectHome.html">
-  
   <!-- ===== PAGE TITLE ===== -->
-  <!-- Shows in browser tab while redirecting -->
-  <title>StudyMate - Redirecting...</title>
+  <title>StudyMate - Q3 Loading...</title>
   
   <!-- ===== FAVICON ===== -->
-  <!-- Small icon that appears in the browser tab -->
-  <!-- Points to the StudyMate logo in the assets folder -->
   <link rel="icon" type="image/png" href="assets/StudyMate.png">
   
   <!-- ===== INLINE STYLES ===== -->
-  <!-- Styles for the loading/redirect page -->
   <style>
     /* Body styling - centers content and adds gradient background */
     body {
-      font-family: Arial, sans-serif;
-      display: flex;              /* Uses flexbox for centering */
-      justify-content: center;    /* Centers horizontally */
-      align-items: center;        /* Centers vertically */
-      height: 100vh;              /* Full viewport height */
-      margin: 0;                  /* Removes default margin */
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Purple gradient */
+      font-family: 'Segoe UI', Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
+      overflow: hidden;
     }
     
     /* Container for centered content */
     .container {
       text-align: center;
+      animation: fadeIn 0.5s ease-in;
+    }
+    
+    /* Logo styling */
+    .logo {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 20px;
+      animation: bounce 1s ease-in-out infinite;
+    }
+    
+    /* Main heading */
+    h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Subtitle */
+    .subtitle {
+      font-size: 20px;
+      margin-bottom: 30px;
+      opacity: 0.9;
     }
     
     /* Loading spinner animation */
     .loader {
-      border: 5px solid #f3f3f3;        /* Light grey border */
-      border-top: 5px solid #667eea;    /* Blue top border (creates spinning effect) */
-      border-radius: 50%;                /* Makes it circular */
-      width: 50px;
-      height: 50px;
-      animation: spin 1s linear infinite; /* Applies spin animation */
-      margin: 20px auto;                  /* Centers the loader */
+      border: 6px solid rgba(255, 255, 255, 0.3);
+      border-top: 6px solid #ffffff;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      margin: 30px auto;
     }
     
-    /* Keyframe animation for spinning loader */
+    /* Loading text */
+    .loading-text {
+      font-size: 18px;
+      margin-top: 20px;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+    
+    /* Progress bar container */
+    .progress-container {
+      width: 300px;
+      height: 8px;
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      margin: 30px auto;
+      overflow: hidden;
+    }
+    
+    /* Progress bar fill */
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #ffffff 0%, #f0f0f0 100%);
+      border-radius: 10px;
+      animation: progress 2s ease-in-out;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+    
+    /* Status message */
+    .status {
+      font-size: 16px;
+      margin-top: 20px;
+      opacity: 0.8;
+      font-style: italic;
+    }
+    
+    /* Keyframe animations */
     @keyframes spin {
-      0% { transform: rotate(0deg); }    /* Start position */
-      100% { transform: rotate(360deg); } /* End position (full rotation) */
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    
+    @keyframes progress {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+    
+    /* Responsive design */
+    @media (max-width: 600px) {
+      h1 { font-size: 36px; }
+      .subtitle { font-size: 16px; }
+      .logo { width: 80px; height: 80px; }
+      .progress-container { width: 250px; }
     }
   </style>
 </head>
 <body>
   <!-- ===== MAIN CONTAINER ===== -->
-  <!-- Displays loading message while redirect happens -->
   <div class="container">
-    <h1>Welcome to StudyMate</h1>
+    <!-- StudyMate Logo -->
+    <img src="assets/StudyMate.png" alt="StudyMate Logo" class="logo">
+    
+    <!-- Main heading -->
+    <h1>StudyMate Q3</h1>
+    <p class="subtitle">Your Personal Study Companion</p>
     
     <!-- Loading spinner -->
     <div class="loader"></div>
     
-    <p>Redirecting to your study companion...</p>
+    <!-- Progress bar -->
+    <div class="progress-container">
+      <div class="progress-bar"></div>
+    </div>
     
-    <!-- Manual fallback link in case auto-redirect fails -->
-    <p><a href="public/1-ProjectHome.html" style="color: white;">Click here if not redirected automatically</a></p>
+    <!-- Loading text -->
+    <p class="loading-text" id="loading-text">Initializing your study environment...</p>
+    
+    <!-- Status message -->
+    <p class="status" id="status">Checking profile...</p>
   </div>
   
-  <!-- ===== JAVASCRIPT REDIRECT ===== -->
-  <!-- Backup redirect method using JavaScript -->
-  <!-- This ensures redirect works even if meta refresh is disabled -->
+  <!-- ===== JAVASCRIPT ===== -->
   <script>
-    // setTimeout waits 100 milliseconds then redirects to home page
-    // This is a backup in case the meta refresh tag doesn't work
-    setTimeout(function() {
-      window.location.href = 'public/1-ProjectHome.html';
-    }, 100);
+    // Loading messages to cycle through
+    const loadingMessages = [
+      'Initializing your study environment...',
+      'Loading your profile...',
+      'Preparing your study materials...',
+      'Setting up your goals...',
+      'Almost ready...'
+    ];
+    
+    const statusMessages = [
+      'Checking profile...',
+      'Loading preferences...',
+      'Syncing data...',
+      'Finalizing setup...',
+      'Ready to go! 🚀'
+    ];
+    
+    let messageIndex = 0;
+    
+    // Update loading messages
+    const messageInterval = setInterval(() => {
+      messageIndex++;
+      if (messageIndex < loadingMessages.length) {
+        document.getElementById('loading-text').textContent = loadingMessages[messageIndex];
+        document.getElementById('status').textContent = statusMessages[messageIndex];
+      }
+    }, 400);
+    
+    // Check if user has a profile
+    setTimeout(() => {
+      const userData = localStorage.getItem('studyMateUser');
+      
+      clearInterval(messageInterval);
+      
+      if (userData) {
+        // User has profile - redirect to home
+        const user = JSON.parse(userData);
+        document.getElementById('loading-text').textContent = `Welcome back, ${user.name}! 👋`;
+        document.getElementById('status').textContent = 'Redirecting to home...';
+        
+        setTimeout(() => {
+          window.location.href = 'public/1-ProjectHome.html';
+        }, 1000);
+      } else {
+        // No profile - redirect to sign up
+        document.getElementById('loading-text').textContent = 'No profile found';
+        document.getElementById('status').textContent = 'Redirecting to sign up...';
+        
+        setTimeout(() => {
+          window.location.href = 'public/0-SignUp.html';
+        }, 1000);
+      }
+    }, 2000);
   </script>
 </body>
 </html>
