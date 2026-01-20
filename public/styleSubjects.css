@@ -63,6 +63,7 @@ body {
 
 /* ===== Navbar (same style system as Home/Planner) ===== */
 .navbar {
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -78,22 +79,30 @@ body {
 
   z-index: 1000;
   box-shadow: 0 2px 5px var(--box-shadow);
+  box-sizing: border-box;
 }
 
 .navbar-left {
   display: flex;
   align-items: center;
   gap: 12px;
+  min-width: 280px;
+  flex-shrink: 0;
 }
 
 .logo {
-  width: 40px;
-  height: 40px;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
 }
 
 .navbar-title {
   font-weight: bold;
+  margin-right: 20px;
   color: var(--text-color);
+  font-size: 18px;
+  white-space: nowrap;
+  min-width: 100px;
 }
 
 #theme-toggle {
@@ -103,19 +112,36 @@ body {
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  margin-left: 10px;
+  font-size: 14px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#theme-toggle:hover {
+  background-color: var(--text-color);
+}
+
+.dark-mode #theme-toggle {
+  background-color: var(--link-color);
+  color: var(--bg-color);
 }
 
 .navbar-right {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  flex: 1;
   gap: 10px;
 }
 
 .navbar-right a {
   text-decoration: none;
   color: var(--link-color);
+  font-size: 15px;
+  font-weight: 500;
   transition: color 0.3s;
-  margin: 0 5px;
+  white-space: nowrap;
+  padding: 5px 10px;
 }
 
 .navbar-right a:hover {
@@ -338,6 +364,7 @@ textarea {
   }
 
   .navbar {
+    height: auto;
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
@@ -348,17 +375,24 @@ textarea {
     width: 100%;
     justify-content: space-between;
     flex-wrap: wrap;
+    min-width: auto;
   }
 
   .navbar-right {
     width: 100%;
     flex-wrap: wrap;
     gap: 8px;
+    justify-content: flex-start;
   }
 
   .navbar-right a {
     font-size: 14px;
     margin: 0 5px;
+  }
+
+  .navbar-title {
+    font-size: 16px;
+    min-width: auto;
   }
 
   #theme-toggle {
@@ -405,8 +439,8 @@ textarea {
   }
 
   .logo {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
   }
 
   .main h1 {

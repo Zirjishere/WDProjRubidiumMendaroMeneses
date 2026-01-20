@@ -84,11 +84,14 @@ header.navbar {
   display: flex;
   align-items: center;
   gap: 12px;
+  min-width: 280px;
+  flex-shrink: 0;
 }
 
 .logo {
-  width: 40px;
-  height: 40px;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
 }
 
 .navbar-title {
@@ -96,6 +99,8 @@ header.navbar {
   margin-right: 20px;
   color: var(--text-color);
   font-size: 18px;
+  white-space: nowrap;
+  min-width: 100px;
 }
 
 #theme-toggle {
@@ -114,9 +119,16 @@ header.navbar {
   background-color: var(--text-color);
 }
 
+.dark-mode #theme-toggle {
+  background-color: var(--link-color);
+  color: var(--bg-color);
+}
+
 .navbar-right {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  flex: 1;
   gap: 10px;
 }
 
@@ -126,7 +138,8 @@ header.navbar {
   font-size: 15px;
   font-weight: 500;
   transition: color 0.3s;
-  margin: 0 5px;
+  white-space: nowrap;
+  padding: 5px 10px;
 }
 
 .navbar-right a:hover {
@@ -385,25 +398,35 @@ footer .button:active {
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
   .navbar {
+    height: auto;
     flex-direction: column;
     align-items: flex-start;
     padding: 15px;
     gap: 10px;
   }
 
-  .navbar-left, .navbar-right {
+  .navbar-left {
     width: 100%;
     justify-content: space-between;
     flex-wrap: wrap;
+    min-width: auto;
   }
 
   .navbar-right {
+    width: 100%;
+    flex-wrap: wrap;
     gap: 8px;
+    justify-content: flex-start;
   }
 
   .navbar-right a {
     font-size: 14px;
     margin: 0 5px;
+  }
+
+  .navbar-title {
+    font-size: 16px;
+    min-width: auto;
   }
 
   #theme-toggle {
@@ -454,8 +477,8 @@ footer .button:active {
   }
 
   .logo {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
   }
 
   .motivation-header h1 {

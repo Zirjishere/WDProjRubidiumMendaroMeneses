@@ -91,6 +91,8 @@ header.navbar {
   display: flex;
   align-items: center;
   gap: 12px;
+  min-width: 280px;
+  flex-shrink: 0;
 }
 
 .navbar-title {
@@ -98,6 +100,8 @@ header.navbar {
   margin-right: 20px;
   color: var(--text-color);
   font-size: 18px;
+  white-space: nowrap;
+  min-width: 100px;
 }
 
 #theme-toggle {
@@ -124,16 +128,19 @@ header.navbar {
 .navbar-right {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-end;
+  flex: 1;
+  gap: 10px;
 }
 
 .navbar-right a {
-  margin: 0 10px;
   text-decoration: none;
   color: var(--link-color);
   font-size: 15px;
   font-weight: 500;
   transition: color 0.3s;
+  white-space: nowrap;
+  padding: 5px 10px;
 }
 
 .navbar-right a:hover {
@@ -194,8 +201,16 @@ main {
 ========================================================= */
 
 .profile-section {
+  background-color: var(--hero-bg);
+  border-radius: 25px;
+  padding: 50px;
+  box-shadow: 0 6px 20px var(--box-shadow);
   display: grid;
-  gap: 50px;
+  gap: 40px;
+}
+
+.dark-mode .profile-section {
+  background-color: var(--hero-bg);
 }
 
 /* Welcome Header */
@@ -232,13 +247,13 @@ main {
 
 /* Profile Card */
 .profile-card {
-  padding: 50px;
-  border-radius: 25px;
+  padding: 40px;
+  border-radius: 20px;
 }
 
 .profile-card h2 {
   font-size: 28px;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
   color: var(--text-color);
 }
 
@@ -250,13 +265,15 @@ main {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 25px;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 .profile-item {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 20px;
+  gap: 12px;
+  padding: 25px;
   background-color: var(--hero-bg);
   border-radius: 15px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -290,13 +307,13 @@ main {
 
 /* Subjects Card */
 .subjects-card {
-  padding: 50px;
-  border-radius: 25px;
+  padding: 40px;
+  border-radius: 20px;
 }
 
 .subjects-card h2 {
   font-size: 28px;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
   color: var(--text-color);
 }
 
@@ -308,6 +325,7 @@ main {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
+  margin-top: 25px;
 }
 
 .subject-badge {
@@ -329,13 +347,13 @@ main {
 
 /* Goals Card */
 .goals-card {
-  padding: 50px;
-  border-radius: 25px;
+  padding: 40px;
+  border-radius: 20px;
 }
 
 .goals-card h2 {
   font-size: 28px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   color: var(--text-color);
 }
 
@@ -348,6 +366,7 @@ main {
   padding: 30px;
   border-radius: 15px;
   border-left: 5px solid var(--link-color);
+  margin-top: 20px;
 }
 
 .dark-mode .goals-content {
@@ -369,8 +388,9 @@ main {
 .action-buttons {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
-  margin-top: 10px;
+  gap: 20px;
+  margin-top: 30px;
+  padding-top: 10px;
 }
 
 /* =========================================================
@@ -484,17 +504,24 @@ footer .button {
     width: 100%;
     justify-content: space-between;
     flex-wrap: wrap;
+    min-width: auto;
   }
 
   .navbar-right {
     width: 100%;
     flex-wrap: wrap;
     gap: 8px;
+    justify-content: flex-start;
   }
 
   .navbar-right a {
     font-size: 14px;
     margin: 0 5px;
+  }
+
+  .navbar-title {
+    font-size: 16px;
+    min-width: auto;
   }
 
   #theme-toggle {
@@ -506,10 +533,14 @@ footer .button {
     font-size: 28px;
   }
 
+  .profile-section {
+    padding: 30px 20px;
+  }
+
   .profile-card,
   .subjects-card,
   .goals-card {
-    padding: 30px 20px;
+    padding: 25px 20px;
   }
 
   .profile-grid {

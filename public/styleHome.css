@@ -99,6 +99,8 @@ header.navbar {
   display: flex;
   align-items: center;
   gap: 12px;
+  min-width: 280px;
+  flex-shrink: 0;
 }
 
 /* Navbar title */
@@ -107,6 +109,8 @@ header.navbar {
   margin-right: 20px;
   color: var(--text-color);
   font-size: 18px;
+  white-space: nowrap;
+  min-width: 100px;
 }
 
 /* Toggle button style similar to example */
@@ -137,16 +141,19 @@ header.navbar {
 .navbar-right {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-end;
+  flex: 1;
+  gap: 10px;
 }
 
 .navbar-right a {
-  margin: 0 10px;
   text-decoration: none;
   color: var(--link-color);
   font-size: 15px;
   font-weight: 500;
   transition: color 0.3s;
+  white-space: nowrap;
+  padding: 5px 10px;
 }
 
 .navbar-right a:hover {
