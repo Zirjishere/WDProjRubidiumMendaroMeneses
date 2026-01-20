@@ -27,13 +27,13 @@ let tasks = [];
 // ===== LOAD TASKS FROM LOCALSTORAGE =====
 // This function runs when the page loads to retrieve saved tasks
 function loadTasks() {
-    // Get the stored tasks from localStorage (returns null if nothing saved)
+    // Get stored tasks from localStorage (returns null if nothing saved)
     const storedTasks = localStorage.getItem('studyTasks');
     
     // If tasks exist in localStorage
     if(storedTasks) {
         tasks = JSON.parse(storedTasks);
-        // Display the tasks on the page
+        // Display tasks on the page
         renderTasks();
     }
 }
@@ -105,7 +105,7 @@ function editTask(index) {
     // Show a prompt with the current task text
     const newTask = prompt('Edit task:', tasks[index]);
     
-    // If user didn't cancel and entered text
+    // If the user didn't cancel and entered text
     if(newTask !== null && newTask.trim()) {
         // Update the task in the array
         tasks[index] = newTask.trim();
@@ -140,7 +140,14 @@ function deleteTask(index) {
 // Get the dark mode toggle button
 const themeToggleBtn = document.getElementById('theme-toggle');
 
-// Apply the saved theme preference when page loads
+// Update the theme icon based on current mode
+function updateThemeIcon() {
+    if (!themeToggleBtn) return;
+    const isDark = document.body.classList.contains('dark-mode');
+    themeToggleBtn.textContent = isDark ? '☀️' : '🌙';
+}
+
+// Apply saved theme preference when the page loads
 function applySavedTheme() {
     // Check localStorage for saved theme preference
     const savedTheme = localStorage.getItem('theme');
@@ -151,12 +158,13 @@ function applySavedTheme() {
     } else {
         document.body.classList.remove('dark-mode');
     }
+    updateThemeIcon();
 }
 
-// Add click event listener to theme toggle button
+// Add click event listener to the theme toggle button
 if(themeToggleBtn) {
     themeToggleBtn.addEventListener('click', () => {
-        // Toggle the dark-mode class on body
+        // Toggle the dark-mode class on the body
         document.body.classList.toggle('dark-mode');
         
         // Save the preference to localStorage
@@ -165,13 +173,14 @@ if(themeToggleBtn) {
         } else {
             localStorage.setItem('theme', 'light');
         }
+        updateThemeIcon();
     });
 }
 
 // ===== INITIALIZATION =====
 // This code runs when the page finishes loading
 document.addEventListener('DOMContentLoaded', () => {
-    // Apply saved theme preference
+    // Apply the saved theme preference
     applySavedTheme();
     
     // Load saved tasks from localStorage
@@ -181,10 +190,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const addBtn = document.getElementById('add-task-btn');
     const taskInput = document.getElementById('task-input');
     
-    // Add task when button is clicked
+    // Add task when the button is clicked
     if(addBtn) addBtn.addEventListener('click', addTask);
     
-    // Add task when Enter key is pressed in input field
+    // Add task when the Enter key is pressed in the input field
     if(taskInput) {
         taskInput.addEventListener('keypress', e => {
             if(e.key === 'Enter') addTask();

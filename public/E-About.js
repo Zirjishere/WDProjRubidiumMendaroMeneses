@@ -8,6 +8,12 @@
 // ===== Dark mode toggle with persistence =====
 const themeToggleBtn = document.getElementById("theme-toggle");
 
+function updateThemeIcon() {
+  if (!themeToggleBtn) return;
+  const isDark = document.body.classList.contains("dark-mode");
+  themeToggleBtn.textContent = isDark ? "☀️" : "🌙";
+}
+
 function applySavedTheme() {
   const savedTheme = localStorage.getItem("theme");
   if (savedTheme === "dark") {
@@ -15,6 +21,7 @@ function applySavedTheme() {
   } else {
     document.body.classList.remove("dark-mode");
   }
+  updateThemeIcon();
 }
 
 if (themeToggleBtn) {
@@ -24,6 +31,7 @@ if (themeToggleBtn) {
       "theme",
       document.body.classList.contains("dark-mode") ? "dark" : "light"
     );
+    updateThemeIcon();
   });
 }
 

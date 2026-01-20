@@ -5,17 +5,26 @@
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
 
+// Update the theme icon based on current mode
+function updateThemeIcon() {
+  if (!themeToggle) return;
+  const isDark = body.classList.contains('dark-mode');
+  themeToggle.textContent = isDark ? '☀️' : '🌙';
+}
+
 // Check for saved theme preference
 const currentTheme = localStorage.getItem('theme') || 'light';
 if (currentTheme === 'dark') {
   body.classList.add('dark-mode');
 }
+updateThemeIcon();
 
 // Toggle theme on button click
 themeToggle.addEventListener('click', () => {
   body.classList.toggle('dark-mode');
   const theme = body.classList.contains('dark-mode') ? 'dark' : 'light';
   localStorage.setItem('theme', theme);
+  updateThemeIcon();
 });
 
 /* =========================================================

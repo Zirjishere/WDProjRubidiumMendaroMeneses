@@ -25,7 +25,14 @@
 // Get the dark mode toggle button
 const themeToggleBtn = document.getElementById("theme-toggle");
 
-// Apply the saved theme preference when page loads
+// Update the theme icon based on current mode
+function updateThemeIcon() {
+  if (!themeToggleBtn) return;
+  const isDark = document.body.classList.contains("dark-mode");
+  themeToggleBtn.textContent = isDark ? "☀️" : "🌙";
+}
+
+// Apply the saved theme preference when the page loads
 function applySavedTheme() {
   // Check localStorage for saved theme preference
   const savedTheme = localStorage.getItem("theme");
@@ -33,12 +40,13 @@ function applySavedTheme() {
   // If dark mode was previously selected, apply it
   if (savedTheme === "dark") document.body.classList.add("dark-mode");
   else document.body.classList.remove("dark-mode");
+  updateThemeIcon();
 }
 
-// Add click event listener to theme toggle button
+// Add click event listener to the theme toggle button
 if (themeToggleBtn) {
   themeToggleBtn.addEventListener("click", () => {
-    // Toggle the dark-mode class on body
+    // Toggle the dark-mode class on the body
     document.body.classList.toggle("dark-mode");
     
     // Save the preference to localStorage
@@ -46,6 +54,7 @@ if (themeToggleBtn) {
       "theme",
       document.body.classList.contains("dark-mode") ? "dark" : "light"
     );
+    updateThemeIcon();
   });
 }
 
@@ -109,7 +118,7 @@ Projectile Motion:
 - Horizontal motion: constant velocity.
 ⟢ x = Vxt
 - Vertical motion: constant acceleration (gravity).
-⟢ y = Vyt - 0.gt^2
+⟢ y = Vyt - 0.5gt^2
 ⟢ vy = Vyi - gt
 - Key equations
 ⟢ Range: R = (V^2sin2θ)/g
@@ -157,7 +166,7 @@ Binomial Distribution:
 ⟢ Each trial is independent
 ⟢ Two possible outcomes: success (p) and failure (q=1-p)
 ⟢ Probability of success (p) is constant
-- Probability Formumla:
+- Probability Formula:
 ⟢ P(X=k) = C(n,k) * p^k * q^(n-k)
 - Mean & Variance:
 ⟢ Mean: μ = np
@@ -167,7 +176,7 @@ Normal Distribution:
 - Continuous probability distribution, symmetric bell-shaped curve.
 - Standard Normal Distribution:
 ⟢ Mean (μ) = 0
-⟢ Standard Deviation (σ) = 1
+⟢ Standard Deviation (σ) =1
 - Probability Density Function:
 ⟢ f(x) = (1/(σ√(2π))) * e^(-0.5((x-μ)/σ)^2)
 - Z-Score:
@@ -193,7 +202,7 @@ Normal Distribution:
 - Octet Rule: Atoms tend to gain, lose, or share electrons to have 8 valence electrons.
 
 Molecular Geometry & VBT:
-- VSPER (Valence Shell Electron Pair Repulsion) Theory:
+- VSEPR (Valence Shell Electron Pair Repulsion) Theory:
 ⟢ Electron pairs around central atom repel each other, determining shape.
 ⟢ Common Geometries:
 1. Linear (180°)
@@ -212,7 +221,7 @@ Nomenclature:
 ⟢ Use stock system if transition metals (e.g., FeCl3 = Iron(III) chloride).
 - Covalent Compounds:
 ⟢ Non-metal + Non-metal
-⟢ Use prefixes to indicate number of atoms (e.g., CO2 = Carbon dioxide
+⟢ Use prefixes to indicate number of atoms (e.g., CO2 = Carbon dioxide)
 - Acids:
 ⟢ HCl -> Hydrochloric acid (binary)
 ⟢ H2SO4 -> Sulfuric acid (oxyanion acid)
@@ -283,7 +292,7 @@ Transport/Circulation:
 1. Heart: Pumps blood.
 2. Blood Vessels: Arteries, veins, capillaries.
 3. Blood: RBCs, WBCs, platelets, plasma.
-⟢ Transpotation of Substances:
+⟢ Transportation of Substances:
 1. Oxygen: Lungs → Body cells via hemoglobin.
 2. Nutrients: Digested food → Body cells via bloodstream.
 - In Plants:
@@ -391,11 +400,9 @@ function loadSubject(name, event) {
   currentSubject = name;
 
   // Update the page title to show current subject
-  document.getElementById("subjectTitle").innerText = name;
-  
+  document.getElementById("subjectTitle").innerText = name;  
   // Load the saved notes for this subject into the textarea
-  document.getElementById("notesArea").value = subjects[name].notes;
-  
+  document.getElementById("notesArea").value = subjects[name].notes;  
   // Display the summary/review content for this subject
   document.getElementById("summaryBox").innerText = subjects[name].summary;
 
@@ -403,8 +410,7 @@ function loadSubject(name, event) {
   refreshQuiz();
 
   // Remove 'active' class from all subject items in sidebar
-  document.querySelectorAll(".subject-item").forEach((item) => item.classList.remove("active"));
-  
+  document.querySelectorAll(".subject-item").forEach((item) => item.classList.remove("active"));  
   // Add 'active' class to the clicked subject item
   if (event && event.target) event.target.classList.add("active");
 }
@@ -414,11 +420,9 @@ function loadSubject(name, event) {
 // It automatically saves the notes to localStorage
 function saveNotes() {
   // Get the current text from the notes textarea
-  const text = document.getElementById("notesArea").value;
-  
+  const text = document.getElementById("notesArea").value;  
   // Update the notes in the subjects object
-  subjects[currentSubject].notes = text;
-  
+  subjects[currentSubject].notes = text;  
   // Save to localStorage with a unique key for each subject
   localStorage.setItem("notes_" + currentSubject, text);
 }

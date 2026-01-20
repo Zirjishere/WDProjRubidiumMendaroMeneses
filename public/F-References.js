@@ -18,7 +18,14 @@
 // Get the dark mode toggle button
 const themeToggleBtn = document.getElementById("theme-toggle");
 
-// Apply the saved theme preference when page loads
+// Update the theme icon based on current mode
+function updateThemeIcon() {
+  if (!themeToggleBtn) return;
+  const isDark = document.body.classList.contains("dark-mode");
+  themeToggleBtn.textContent = isDark ? "☀️" : "🌙";
+}
+
+// Apply saved theme preference when page loads
 function applySavedTheme() {
   // Check localStorage for saved theme preference
   const savedTheme = localStorage.getItem("theme");
@@ -29,6 +36,7 @@ function applySavedTheme() {
   } else {
     document.body.classList.remove("dark-mode");
   }
+  updateThemeIcon();
 }
 
 // Add click event listener to theme toggle button
@@ -42,6 +50,7 @@ if (themeToggleBtn) {
       "theme",
       document.body.classList.contains("dark-mode") ? "dark" : "light"
     );
+    updateThemeIcon();
   });
 }
 

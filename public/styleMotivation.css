@@ -134,16 +134,32 @@ header.navbar {
 
 .navbar-right a {
   text-decoration: none;
-  color: var(--link-color);
+  color: var(--text-color);
   font-size: 15px;
   font-weight: 500;
-  transition: color 0.3s;
+  transition: all 0.3s ease;
   white-space: nowrap;
-  padding: 5px 10px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  background-color: transparent;
 }
 
 .navbar-right a:hover {
-  color: var(--text-color);
+  background-color: rgba(47, 95, 158, 0.2);
+}
+
+.dark-mode .navbar-right a:hover {
+  background-color: rgba(184, 203, 224, 0.2);
+}
+
+.navbar-right a[aria-current="page"] {
+  background-color: #5dade2;
+  color: #ffffff;
+}
+
+.dark-mode .navbar-right a[aria-current="page"] {
+  background-color: #5dade2;
+  color: #1b2438;
 }
 
 /* ===== MAIN CONTENT ===== */
