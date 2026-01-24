@@ -1,8 +1,4 @@
-/* =========================================================
-   Global Reset & Variables
-   - Define primary and dark mode color variables for easy theme switch
-   - Reset margin, padding, and box-sizing for consistency
-========================================================= */
+/* Global Reset & Variables */
 
 :root {
   /* Page & Sections */
@@ -72,9 +68,7 @@ body {
   transition: background-color 0.2s, color 0.2s;
 }
 
-/* =========================================================
-   NAVBAR (Fixed height and layout)
-========================================================= */
+/* Navbar */
 
 header.navbar {
   height: 64px;
@@ -175,9 +169,7 @@ header.navbar img.logo {
   object-fit: contain;
 }
 
-/* =========================================================
-   Main Layout
-========================================================= */
+/* Main Layout */
 
 main {
   margin-top: 90px;
@@ -188,9 +180,7 @@ main {
   padding: 40px 20px;
 }
 
-/* =========================================================
-   Sign Up Container
-========================================================= */
+/* Sign Up Container */
 
 .signup-container {
   width: 100%;
@@ -228,9 +218,7 @@ main {
   color: var(--text-color);
 }
 
-/* =========================================================
-   Form Styling
-========================================================= */
+/* Form Styling */
 
 .form-group {
   margin-bottom: 25px;
@@ -279,7 +267,7 @@ main {
   box-shadow: 0 0 0 3px rgba(184, 203, 224, 0.1);
 }
 
-/* Range Slider */
+/* Range slider */
 .form-group input[type="range"] {
   width: 100%;
   height: 8px;
@@ -321,7 +309,7 @@ main {
   color: var(--link-color);
 }
 
-/* Radio Buttons */
+/* Radio buttons */
 .radio-group {
   display: flex;
   flex-direction: column;
@@ -399,9 +387,7 @@ textarea {
   min-height: 120px;
 }
 
-/* =========================================================
-   Buttons
-========================================================= */
+/* Buttons */
 
 .btn,
 .button {
@@ -438,9 +424,7 @@ textarea {
   margin-top: 10px;
 }
 
-/* =========================================================
-   Form Footer
-========================================================= */
+/* Form Footer */
 
 .form-footer {
   text-align: center;
@@ -461,9 +445,7 @@ textarea {
   text-decoration: underline;
 }
 
-/* =========================================================
-   Box Styling
-========================================================= */
+/* Box Styling */
 
 .box {
   background-color: var(--box-bg);
@@ -476,9 +458,7 @@ textarea {
   color: var(--text-color);
 }
 
-/* =========================================================
-   Footer
-========================================================= */
+/* Footer */
 
 footer {
   margin-top: auto;
@@ -531,9 +511,7 @@ footer .button:hover {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* =========================================================
-   Responsive
-========================================================= */
+/* Responsive */
 
 @media (max-width: 900px) {
   main {
@@ -564,8 +542,9 @@ footer .button:hover {
   }
 
   .navbar-right a {
-    font-size: 14px;
-    margin: 0 5px;
+    font-size: 12px;
+    margin: 0 3px;
+    padding: 6px 10px;
   }
 
   .navbar-title {
@@ -605,12 +584,23 @@ footer .button:hover {
   }
 
   .navbar-title {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   header.navbar img.logo {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .navbar-right a {
+    font-size: 11px;
+    padding: 5px 8px;
+    margin: 0 2px;
+  }
+
+  #theme-toggle {
+    font-size: 11px;
+    padding: 5px 10px;
   }
 
   footer {

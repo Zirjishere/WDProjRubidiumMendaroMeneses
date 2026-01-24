@@ -1,8 +1,4 @@
-/* =========================================================
-   Global Reset & Variables
-   - Define primary and dark mode color variables for easy theme switch
-   - Reset margin, padding, and box-sizing for consistency
-========================================================= */
+/* Global Reset & Variables */
 
 :root {
   /* Page & Sections */
@@ -70,13 +66,7 @@ body {
   transition: background-color 0.2s, color 0.2s;
 }
 
-/* =========================================================
-   NAVBAR (Fixed height and layout)
-========================================================= */
-
-/* Navbar and toggle adjusted to match the example style */
-
-/* Adjust navbar padding and width to match example */
+/* Navbar */
 header.navbar {
   height: 64px;
   padding: 10px 20px;
@@ -94,7 +84,7 @@ header.navbar {
   box-sizing: border-box; /* to prevent horizontal overflow */
 }
 
-/* Navbar left side flex and alignment */
+/* Navbar left side */
 .navbar-left {
   display: flex;
   align-items: center;
@@ -113,7 +103,7 @@ header.navbar {
   min-width: 100px;
 }
 
-/* Toggle button style similar to example */
+/* Theme toggle button */
 #theme-toggle {
   padding: 5px 10px;
   background-color: var(--link-color);
@@ -126,18 +116,18 @@ header.navbar {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Hover effect */
+/* Hover */
 #theme-toggle:hover {
   background-color: var(--text-color);
 }
 
-/* Dark mode toggle color adjustments */
+/* Dark mode toggle */
 .dark-mode #theme-toggle {
   background-color: var(--link-color);
   color: var(--bg-color);
 }
 
-/* Navbar right side links */
+/* Navbar right side */
 .navbar-right {
   display: flex;
   align-items: center;
@@ -176,7 +166,7 @@ header.navbar {
   color: #1b2438;
 }
 
-/* Logo image size adjustment */
+/* Logo size */
 header.navbar img.logo {
   width: 28px;
   height: 28px;
@@ -184,17 +174,13 @@ header.navbar img.logo {
 }
 
 
-/* =========================================================
-   Main Layout
-========================================================= */
+/* Main Layout */
 
 main {
   margin-top: 90px;
 }
 
-/* =========================================================
-   Hero Section
-========================================================= */
+/* Hero Section */
 
 .hero {
   width: 95%;
@@ -226,14 +212,12 @@ main {
   margin-bottom: 20px;
 }
 
-/* Spacing between motivational glimpse and clock */
+/* Feature box spacing */
 .hero-text .feature-box {
   margin-bottom: 24px;
 }
 
-/* =========================================================
-   Buttons & Boxes
-========================================================= */
+/* Buttons & Boxes */
 
 .btn,
 .button {
@@ -266,7 +250,7 @@ main {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Dark mode button styling */
+/* Dark mode buttons */
 .dark-mode .btn,
 .dark-mode .button {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
@@ -286,25 +270,25 @@ main {
   color: var(--text-color-darkmode-box); /* Text color for boxes */
 }
 
-/* Dark mode box adjustments for feature sections */
+/* Dark mode feature boxes */
 .dark-mode .feature-box {
   background-color: var(--box-bg);
   color: var(--text-color);
   box-shadow: 0 4px 10px var(--box-shadow);
 }
 
-/* Title color in feature boxes for dark mode */
+/* Dark mode feature box titles */
 .dark-mode .feature-box h2 {
   color: var(--text-color);
 }
 
-/* Text and quote color in feature boxes for dark mode */
+/* Dark mode feature box text */
 .dark-mode .feature-box p,
 .dark-mode .feature-box blockquote {
   color: var(--text-color);
 }
 
-/* Button inside feature-box dark mode style */
+/* Dark mode feature box buttons */
 .dark-mode .feature-box a.button {
   background-color: var(--link-color);
   color: var(--bg-color);
@@ -317,13 +301,13 @@ main {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Hover effect on buttons in dark mode */
+/* Dark mode button hover */
 .dark-mode .feature-box a.button:hover {
   background-color: var(--text-color);
   color: var(--bg-color);
 }
 
-/* Real-time clock styling for visibility and larger font */
+/* Clock styling */
 #clock {
   font-weight: 700;
   font-size: 28px;       /* Increased font size for better visibility */
@@ -331,10 +315,7 @@ main {
   color: var(--text-color);
 }
 
-/* =========================================================
-   Cards Section
-   - Fix text color for light and dark mode for readability
-========================================================= */
+/* Cards Section */
 
 .cards {
   display: grid;
@@ -354,13 +335,13 @@ main {
   color: var(--text-color-darkmode-box);
 }
 
-/* Dark mode card background and text */
+/* Dark mode cards */
 .dark-mode .card {
   background-color: var(--box-bg);
   color: var(--text-color);
 }
 
-/* Card hover effect remains */
+/* Card hover */
 .card:hover {
   transform: translateY(-8px);
   box-shadow: 0 15px 30px rgba(0,0,0,0.15);
@@ -375,9 +356,7 @@ main {
   line-height: 1.5;
 }
 
-/* =========================================================
-   Call To Action Section
-========================================================= */
+/* Call To Action Section */
 
 .cta {
   margin: 60px auto;
@@ -391,16 +370,14 @@ main {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Dark mode CTA adjustments */
+/* Dark mode CTA */
 .dark-mode .cta {
   background-color: var(--box-bg);
   color: var(--text-color);
   border-color: var(--text-color);
 }
 
-/* =========================================================
-   Authors Section
-========================================================= */
+/* Authors Section */
 
 .authors-section {
   background: var(--box-bg);
@@ -489,9 +466,7 @@ main {
   color: #ffffff;
 }
 
-/* =========================================================
-   Buttons
-========================================================= */
+/* Buttons */
 
 .button {
   background-color: var(--link-color);
@@ -514,10 +489,7 @@ main {
   color: var(--bg-color);
 }
 
-/* =========================================================
-   Footer
-   - Footer text and background color change for light/dark modes
-========================================================= */
+/* Footer */
 
 footer {
   margin-top: auto;
@@ -582,9 +554,7 @@ footer .button:active {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
-/* =========================================================
-   Responsive
-========================================================= */
+/* Responsive */
 
 @media (max-width: 900px) {
   .hero {
@@ -626,8 +596,9 @@ footer .button:active {
   }
 
   .navbar-right a {
-    font-size: 14px;
-    margin: 0 5px;
+    font-size: 12px;
+    margin: 0 3px;
+    padding: 6px 10px;
   }
 
   #theme-toggle {
@@ -678,12 +649,23 @@ footer .button:active {
   }
 
   .navbar-title {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   header.navbar img.logo {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .navbar-right a {
+    font-size: 11px;
+    padding: 5px 8px;
+    margin: 0 2px;
+  }
+
+  #theme-toggle {
+    font-size: 11px;
+    padding: 5px 10px;
   }
 
   .cards {

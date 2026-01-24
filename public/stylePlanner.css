@@ -1,4 +1,4 @@
-/* ===== Color Variables for Light and Dark Modes ===== */
+/* Color Variables */
 :root {
     /* Page & Sections */
     --bg-color: #9fbfcc;              /* Soft blue page background */
@@ -41,19 +41,19 @@
     --footer-text-light: #e6ecf3;
 }
 
-/* ===== Global Reset / Consistency ===== */
+/* Global Reset */
 * {
     box-sizing: border-box;
 }
 
-/* Make the sticky/flexible footer layout work */
+/* Footer layout */
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
 }
 
-/* ===== Body Layout (Flex Column) ===== */
+/* Body Layout */
 body {
     font-family: Arial, sans-serif;
     background-color: var(--bg-color);
@@ -65,7 +65,7 @@ body {
     min-height: 100vh;
 }
 
-/* ===== Navbar ===== */
+/* Navbar */
 .navbar {
     height: 64px;
     display: flex;
@@ -159,14 +159,14 @@ body {
     color: #1b2438;
 }
 
-/* ===== Main Content Area ===== */
+/* Main Content */
 .content {
     margin-top: 90px; /* space for fixed navbar */
     padding: 20px 40px;
     padding-bottom: 20px; /* small spacing only */
 }
 
-/* ===== Box/Card Styles ===== */
+/* Box Styles */
 .box {
     background-color: var(--box-bg);
     border-radius: 8px;
@@ -180,7 +180,7 @@ body {
     box-shadow: 0 6px 12px var(--box-shadow);
 }
 
-/* ===== Task Controls Row ===== */
+/* Task Controls */
 .task-controls {
     display: flex;
     gap: 10px;
@@ -189,7 +189,7 @@ body {
     margin-bottom: 15px;
 }
 
-/* Input and Button for task entry */
+/* Task input and button */
 #task-input {
     padding: 10px;
     flex: 1;              /* grows to fill space */
@@ -232,7 +232,7 @@ body {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
-/* ===== Task List ===== */
+/* Task List */
 #task-list {
     list-style: none;
     padding: 0;
@@ -312,7 +312,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
-/* ===== Footer (Flexible / Not Fixed) ===== */
+/* Footer */
 footer {
     margin-top: auto; /* IMPORTANT: keeps footer at bottom if page is short */
     width: 100%;
@@ -376,7 +376,7 @@ footer .button:active {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
-/* ===== Responsive ===== */
+/* Responsive */
 @media (max-width: 768px) {
     .navbar {
         height: auto;
@@ -402,8 +402,9 @@ footer .button:active {
     }
 
     .navbar a {
-        font-size: 14px;
-        margin: 0 5px;
+        font-size: 12px;
+        margin: 0 3px;
+        padding: 6px 10px;
     }
 
     .navbar-title {
@@ -509,6 +510,26 @@ footer .button:active {
 
     .edit-btn {
         margin-right: 0;
+    }
+
+    .navbar-title {
+        font-size: 14px;
+    }
+
+    .logo {
+        width: 20px;
+        height: 20px;
+    }
+
+    .navbar a {
+        font-size: 11px;
+        padding: 5px 8px;
+        margin: 0 2px;
+    }
+
+    #theme-toggle {
+        font-size: 11px;
+        padding: 5px 10px;
     }
 
     footer {

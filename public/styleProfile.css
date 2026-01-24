@@ -1,6 +1,4 @@
-/* =========================================================
-   Global Reset & Variables
-========================================================= */
+/* Global Reset & Variables */
 
 :root {
   /* Page & Sections */
@@ -66,9 +64,7 @@ body {
   transition: background-color 0.2s, color 0.2s;
 }
 
-/* =========================================================
-   NAVBAR
-========================================================= */
+/* Navbar */
 
 header.navbar {
   height: 64px;
@@ -183,9 +179,7 @@ main {
   margin-right: auto;
 }
 
-/* =========================================================
-   No Profile Section
-========================================================= */
+/* No Profile Section */
 
 .no-profile-section {
   display: flex;
@@ -212,9 +206,7 @@ main {
   color: var(--text-color);
 }
 
-/* =========================================================
-   Profile Section
-========================================================= */
+/* Profile Section */
 
 .profile-section {
   background-color: var(--hero-bg);
@@ -229,7 +221,7 @@ main {
   background-color: var(--hero-bg);
 }
 
-/* Welcome Header */
+/* Welcome header */
 .welcome-header {
   text-align: center;
   padding: 40px 30px;
@@ -261,7 +253,7 @@ main {
   color: var(--text-color);
 }
 
-/* Profile Card */
+/* Profile card */
 .profile-card {
   padding: 40px;
   border-radius: 20px;
@@ -321,7 +313,7 @@ main {
   color: var(--text-color);
 }
 
-/* Subjects Card */
+/* Subjects card */
 .subjects-card {
   padding: 40px;
   border-radius: 20px;
@@ -361,7 +353,7 @@ main {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Goals Card */
+/* Goals card */
 .goals-card {
   padding: 40px;
   border-radius: 20px;
@@ -400,7 +392,7 @@ main {
   color: var(--text-color);
 }
 
-/* Action Buttons */
+/* Action buttons */
 .action-buttons {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -409,9 +401,7 @@ main {
   padding-top: 10px;
 }
 
-/* =========================================================
-   Buttons
-========================================================= */
+/* Buttons */
 
 .button {
   display: inline-block;
@@ -448,9 +438,7 @@ main {
   background: #c82333;
 }
 
-/* =========================================================
-   Box Styling
-========================================================= */
+/* Box Styling */
 
 .box {
   background-color: var(--box-bg);
@@ -464,9 +452,7 @@ main {
   color: var(--text-color);
 }
 
-/* =========================================================
-   Footer
-========================================================= */
+/* Footer */
 
 footer {
   margin-top: auto;
@@ -498,9 +484,7 @@ footer .button {
   display: inline-block;
 }
 
-/* =========================================================
-   Responsive
-========================================================= */
+/* Responsive */
 
 @media (max-width: 900px) {
   main {
@@ -531,8 +515,9 @@ footer .button {
   }
 
   .navbar-right a {
-    font-size: 14px;
-    margin: 0 5px;
+    font-size: 12px;
+    margin: 0 3px;
+    padding: 6px 10px;
   }
 
   .navbar-title {
@@ -600,12 +585,23 @@ footer .button {
   }
 
   .navbar-title {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   header.navbar img.logo {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .navbar-right a {
+    font-size: 11px;
+    padding: 5px 8px;
+    margin: 0 2px;
+  }
+
+  #theme-toggle {
+    font-size: 11px;
+    padding: 5px 10px;
   }
 
   footer {

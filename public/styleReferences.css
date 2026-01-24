@@ -1,9 +1,4 @@
-/* =========================================================
-   styleReferences.css - References Page Styling
-   Matches the color scheme from styleHome.css
-========================================================= */
-
-/* ===== Color Variables for Light and Dark Modes ===== */
+/* Color Variables */
 :root {
   /* Page & Sections */
   --bg-color: #9fbfcc;              /* Soft blue page background */
@@ -48,7 +43,7 @@
   --footer-text-light: #e6ecf3;
 }
 
-/* ===== Global Reset ===== */
+/* Global Reset */
 * {
   margin: 0;
   padding: 0;
@@ -69,7 +64,7 @@ body {
   transition: background-color 0.2s, color 0.2s;
 }
 
-/* ===== NAVBAR ===== */
+/* Navbar */
 header.navbar {
   height: 64px;
   padding: 10px 20px;
@@ -169,7 +164,7 @@ header.navbar img.logo {
   object-fit: contain;
 }
 
-/* ===== MAIN CONTENT ===== */
+/* Main Content */
 main {
   margin-top: 90px;
   flex: 1;
@@ -194,7 +189,7 @@ main {
   color: var(--text-color);
 }
 
-/* ===== REFERENCE SECTIONS ===== */
+/* Reference Sections */
 .reference-section {
   margin-bottom: 2rem;
   padding: 1.5rem;
@@ -232,7 +227,7 @@ main {
   color: var(--text-color);
 }
 
-/* ===== BOX STYLING ===== */
+/* Box Styling */
 .box {
   background-color: var(--box-bg);
   border-radius: 12px;
@@ -247,7 +242,7 @@ main {
   color: var(--text-color);
 }
 
-/* ===== FOOTER ===== */
+/* Footer */
 footer {
   margin-top: auto;
   background: var(--footer-bg-light);
@@ -310,7 +305,7 @@ footer .button:active {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
-/* ===== BUTTON STYLING ===== */
+/* Button Styling */
 .button {
   display: inline-block;
   background: var(--link-color);
@@ -347,7 +342,7 @@ footer .button:active {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
-/* ===== RESPONSIVE ===== */
+/* Responsive */
 @media (max-width: 900px) {
   .navbar {
     height: auto;
@@ -372,8 +367,9 @@ footer .button:active {
   }
 
   .navbar-right a {
-    font-size: 14px;
-    margin: 0 5px;
+    font-size: 12px;
+    margin: 0 3px;
+    padding: 6px 10px;
   }
 
   .navbar-title {
@@ -424,12 +420,23 @@ footer .button:active {
 
 @media (max-width: 600px) {
   .navbar-title {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   header.navbar img.logo {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .navbar-right a {
+    font-size: 11px;
+    padding: 5px 8px;
+    margin: 0 2px;
+  }
+
+  #theme-toggle {
+    font-size: 11px;
+    padding: 5px 10px;
   }
 
   .references-container {

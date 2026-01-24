@@ -1,4 +1,4 @@
-/* ===== Color Variables for Light and Dark Modes ===== */
+/* Color Variables */
 :root {
   /* Page & Sections */
   --bg-color: #9fbfcc;              /* Soft blue page background */
@@ -41,7 +41,7 @@
   --footer-text-light: #e6ecf3;
 }
 
-/* ===== Base ===== */
+/* Base */
 * { box-sizing: border-box; }
 
 html, body {
@@ -61,7 +61,7 @@ body {
 }
 
 
-/* ===== Navbar (same style system as Home/Planner) ===== */
+/* Navbar */
 .navbar {
   height: 64px;
   display: flex;
@@ -164,7 +164,7 @@ body {
   color: #1b2438;
 }
 
-/* ===== Layout ===== */
+/* Layout */
 .container {
   width: 90%;
   max-width: 1200px;
@@ -180,7 +180,7 @@ body {
   box-shadow: 0 6px 15px var(--box-shadow);
 }
 
-/* ===== Main ===== */
+/* Main */
 .main h1 {
   font-size: 40px;
   margin: 0 0 10px 0;
@@ -239,7 +239,7 @@ textarea {
 
 .quiz { margin-top: 18px; }
 
-/* ===== Buttons (same style idea as Home/Planner) ===== */
+/* Buttons */
 .button {
   display: inline-block;
   margin-top: 10px;
@@ -277,7 +277,7 @@ textarea {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
-/* ===== Sidebar ===== */
+/* Sidebar */
 .sidebar h3 {
   margin: 0 0 15px 0;
   color: var(--text-color);
@@ -305,7 +305,7 @@ textarea {
   border: 2px solid var(--link-color);
 }
 
-/* ===== Footer ===== */
+/* Footer */
 .footer {
   margin-top: auto;      /* keeps footer at bottom if page is short */
   width: 100%;
@@ -370,7 +370,7 @@ textarea {
 }
 
 
-/* ===== Responsive ===== */
+/* Responsive */
 @media (max-width: 900px) {
   .container {
     grid-template-columns: 1fr;
@@ -402,8 +402,9 @@ textarea {
   }
 
   .navbar-right a {
-    font-size: 14px;
-    margin: 0 5px;
+    font-size: 12px;
+    margin: 0 3px;
+    padding: 6px 10px;
   }
 
   .navbar-title {
@@ -451,12 +452,23 @@ textarea {
   }
 
   .navbar-title {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .logo {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .navbar-right a {
+    font-size: 11px;
+    padding: 5px 8px;
+    margin: 0 2px;
+  }
+
+  #theme-toggle {
+    font-size: 11px;
+    padding: 5px 10px;
   }
 
   .main h1 {
